@@ -11,14 +11,13 @@
 	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
 	crossorigin="anonymous">
 <title>SEL-Register</title>
-
 </head>
 <body>
     <div class="container">
         <div class="page-header">
             <h1>Register <small>SEL</small></h1>
         </div>
-        <form action="Register" method="post">
+        <form action="Profile" method="post">
             <div class="form-group">
                 <label class="control-label">First Name</label>
                 <input class="form-control" type="text" name="FirstName" placeholder="FirstName">

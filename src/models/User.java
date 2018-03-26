@@ -1,6 +1,6 @@
 package models;
 
-public class Student {
+public class User {
 	int count = 0;
 	String firstName;
 	String lastName;
@@ -9,7 +9,7 @@ public class Student {
 	String username;
 	int id;
 
-	public Student(String firstName, String lastName, String email, String password) {
+	public User(String firstName, String lastName, String email, String password) {
 		this.id = count++;
 		this.firstName = firstName;
 		this.lastName = lastName;
