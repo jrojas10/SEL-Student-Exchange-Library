@@ -6,6 +6,7 @@ public class Student {
 	String lastName;
 	String email;
 	String password;
+	String username;
 	int id;
 
 	public Student(String firstName, String lastName, String email, String password) {
