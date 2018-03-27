@@ -17,7 +17,7 @@
         <div class="page-header">
             <h1>Register <small>SEL</small></h1>
         </div>
-        <form action="Profile" method="post">
+        <form action="AddUser" method="post">
             <div class="form-group">
                 <label class="control-label">First Name</label>
                 <input class="form-control" type="text" name="FirstName" placeholder="FirstName">
@@ -29,7 +29,7 @@
 
             <div class="form-group">
                 <label class="control-label">E-Mail</label>
-                <input class="form-control" type="email" name="E-Mail" placeholder="E-Mail">
+                <input class="form-control" type="email" name="email" placeholder="E-Mail">
             </div>
             <div class="form-group">
                 <label class="control-label">Password</label>

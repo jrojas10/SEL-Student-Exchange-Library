@@ -1,58 +1,81 @@
 package models;
 
 public class Book {
-	int count = 0;
+
 	int id;
 	String name;
 	String author;
-	int isbn;
+	String isbn;
 	String category;
+	String course;
+	String condition;
+	int price;
 	
-public Book(String name, String author, int isbn, String category) {
-	this.id = count++;
-	this.name = name;
-	this.author = author;
-	this.isbn= isbn;
-	this.category = category;
-}
 
-public int getCount() {
-	return count;
-}
+	public Book(int id, String name, String author, String isbn, String category, String condition, String course, int price) {
+		this.id = id;
+		this.name = name;
+		this.author = author;
+		this.isbn = isbn;
+		this.category = category;
+		this.condition = condition;
+		this.course = course;
+		this.price = price;
+	}
 
-public void setCount(int count) {
-	this.count = count;
-}
+	public int getId() {
+		return id;
+	}
 
-public String getName() {
-	return name;
-}
+	public void setId(int id) {
+		this.id = id;
+	}
 
-public void setName(String name) {
-	this.name = name;
-}
+	public String getCourse() {
+		return course;
+	}
 
-public String getAuthor() {
-	return author;
-}
+	public void setCourse(String course) {
+		this.course = course;
+	}
 
-public void setAuthor(String author) {
-	this.author = author;
-}
+	public String getCondition() {
+		return condition;
+	}
 
-public int getIsbn() {
-	return isbn;
-}
+	public void setCondition(String condition) {
+		this.condition = condition;
+	}
 
-public void setIsbn(int isbn) {
-	this.isbn = isbn;
-}
+	public String getName() {
+		return name;
+	}
 
-public String getCategory() {
-	return category;
-}
+	public void setName(String name) {
+		this.name = name;
+	}
 
-public void setCategory(String category) {
-	this.category = category;
-}
+	public String getAuthor() {
+		return author;
+	}
+
+	public void setAuthor(String author) {
+		this.author = author;
+	}
+
+	public String getIsbn() {
+		return isbn;
+	}
+
+	public void setIsbn(String isbn) {
+		this.isbn = isbn;
+	}
+
+	public String getCategory() {
+		return category;
+	}
+
+	public void setCategory(String category) {
+		this.category = category;
+	}
 }

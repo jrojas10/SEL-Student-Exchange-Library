@@ -1,7 +1,7 @@
 package models;
 
 public class User {
-	int count = 0;
+	
 	String firstName;
 	String lastName;
 	String email;
@@ -9,21 +9,15 @@ public class User {
 	String username;
 	int id;
 
-	public User(String firstName, String lastName, String email, String password) {
-		this.id = count++;
+	public User(int id,String firstName, String lastName, String email, String password) {
+		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
 		this.password = password;
 	}
 
-	public int getCount() {
-		return count;
-	}
 
-	public void setCount(int count) {
-		this.count = count;
-	}
 
 	public String getFirstName() {
 		return firstName;
