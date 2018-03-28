@@ -22,11 +22,11 @@
     <ul class="nav navbar-nav">
       <li class="active"><a href="#">Home</a></li>
       <li><a href="#">Post</a></li>
-      <li><a href="#">User Profile</a></li>
+      <li><a href="Profile">User Profile</a></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
-      <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-      <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      <li><a href="SignUp"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+      <li><a href="Login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
     </ul>
   </div>
 </nav>

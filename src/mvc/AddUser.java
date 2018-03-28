@@ -37,7 +37,11 @@ public class AddUser extends HttpServlet {
 		String ps2 = request.getParameter("password2");
 		
 		//validation here
-	
+		if (first == null || first.trim().length() == 0 || second == null || second.trim().length() == 0 || email == null ||
+				email.trim().length() == 0 || ps1 == null || ps1.trim().length() == 0 || ps2 == null || ps2.trim().length() == 0) {
+			response.sendRedirect("SignUp");
+			return;
+		}
 		//response.sendRedirect("SignUp");
 		//connection to database
 		// query to add person to database
