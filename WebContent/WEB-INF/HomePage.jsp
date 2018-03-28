@@ -10,31 +10,46 @@
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
 	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
 	crossorigin="anonymous">
-<title>SEL-Home</title>
+<title>SEL-Register</title>
 
 </head>
 <body>
-  <div class="jumbotron">
-  <h1 class="display-3">Student Exchange Library</h1>
-  <p class="lead">Helping students exchange books.</p>
-  <hr class="my-4">
-  <p>Search for books .</p>
-  <p class="lead">
-    <form action="/hms/accommodations" method="GET"> 
-  <div class="row">
-    <div class="col-xs-6 col-md-4">
-      <div class="input-group">
-   <input type="text" class="form-control" placeholder="Search" id="txtSearch"/>
-   <div class="input-group-btn">
-        <button class="btn btn-primary" type="submit">
-        <span class="glyphicon glyphicon-search"></span>
-        </button>
-   </div>
-   </div>
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">SEL</a>
     </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="#">Home</a></li>
+      <li><a href="#">Post</a></li>
+      <li><a href="#">User Profile</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+      <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+    </ul>
   </div>
-</form>
+</nav>
+<div class="jumbotron">
+  <h1 class="display-3">Student Exchange Library</h1>
+  <p class="lead">Exchange books with other students.</p>
+  <hr class="my-4">
+  <p>Explore books.</p>
+  <p class="lead">
+    <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+          <form class="navbar-form navbar-left" role="search">
+    <div class="form-group">
+        <input type="text" class="form-control" placeholder="Search"></input>
+    </div>
   </p>
+</div>
+<div class="card">
+  <img class="card-img-top" src="/images/pathToYourImage.png" alt="Card image cap">
+  <div class="card-body"> Some more card content </div>
+</div>
+<div class="card">
+  <img class="card-img-top" src="/images/pathToYourImage.png" alt="Card image cap">
+  <div class="card-body"> Some more card content </div>
 </div>
 </body>
 </html>
