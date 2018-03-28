@@ -48,12 +48,12 @@ public class ProfileController extends HttpServlet {
 			
 			Connection c = null;
 			try {
-				String url = "jdbc:mysql://localhost:3306";
-				String username = "root";
-				String password = "pass";
+				String url = "jdbc:mysql://cs3.calstatela.edu/cs3220stu49"; 
+				String 																							username = "cs3220stu49";
+				String 																							password ="#Enwva2#";
 				
 				c = DriverManager.getConnection(url, username, password);
-				String sql = "select * from sel.users where email = ? and password = ?";
+				String sql = "select * from users where email = ? and password = ?";
 				PreparedStatement pstmt = c.prepareStatement(sql);
 				pstmt.setString(1, email);
 				pstmt.setString(2, ps);

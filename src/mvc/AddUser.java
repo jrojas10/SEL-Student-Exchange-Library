@@ -37,17 +37,18 @@ public class AddUser extends HttpServlet {
 		String ps2 = request.getParameter("password2");
 		
 		//validation here
-		
-		
+	
+		//response.sendRedirect("SignUp");
 		//connection to database
 		// query to add person to database
 		Connection c = null;
 		try {
-			String url = "jdbc:mysql://localhost:3306";
-			String username = "root";
-			String password = "pass";
+			String url = "jdbc:mysql://cs3.calstatela.edu/cs3220stu49"; 
+																													String username = "cs3220stu49";
+																													String password ="#Enwva2#";
 			
-			String sql = "INSERT INTO `sel`.`users` (`FirstName`, `LastName`, `email`, `password`) VALUES (?, ?, ?, ?);";
+			String sql = "INSERT INTO `users` (`FirstName`, `LastName`, `email`, `password`) VALUES (?, ?, ?, ?);";
+			//String sql = "INSERT INTO `users` (`FirstName`, `LastName`, `email`, `password`) VALUES (?, ?, ?, ?);";
 			c = DriverManager.getConnection(url, username, password);
 			PreparedStatement pstmt = c.prepareStatement(sql);
 			pstmt.setString(1, first);
