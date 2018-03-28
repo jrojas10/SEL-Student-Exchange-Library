@@ -6,6 +6,8 @@
 
 !src
 !src/**
+!ban
+!ban/**
 
 !WebContent
 !WebContent/**
