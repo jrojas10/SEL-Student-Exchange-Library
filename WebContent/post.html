@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Made with Thimble</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Made with Brackets</title>
+    <link rel="stylesheet" href="post-styles.css">
   </head>
   
   <body>
@@ -12,23 +12,31 @@
     <h1>Post your book on SEL</h1>
     
     <form action="" method="get">
-      <label>Title</label><br>
-      <input type="text"><br>
-      <label>Author</label><br>
-      <input type="text"><br>
-      <label>ISBN# </label><br>
-      <input type="text"><br>
-      <label>Condition</label><br>
-      <togle>
-      <input type="radio" name="condition">New (unopened)<br>
-      <input type="radio" name="condition">Good<br>
-      <input type="radio" name="condition">Mid<br>
-      <input type="radio" name="condition">Poor<br>
-      <input type="submit" value="Submit">
-      </togle>
+      <label>Title</label>
+      <input type="text">
+      <label>Author's First Name</label>
+      <input type="text">
+      <label>Author's Last Name</label>
+      <input type="text">
+      <label>ISBN# </label>
+      <input type="text">
+      <label>Subject / Class </label>
+      <input type="text">
+        <div class="rad_btns">
+           <label>Condition</label>
+            
+           <div class = rad> <input type="radio" name="condition">New </div>
+           <div class = rad> <input type="radio" name="condition">Good </div>
+           <div class = rad> <input type="radio" name="condition">Mid </div>
+           <div class = rad> <input type="radio" name="condition">Poor </div>
+           
+        </div>
+        
+        <input type="submit" value="Submit">
+        
     </form>
-
-    
+      
+      
   </body>
   
 </html>
