@@ -1,4 +1,4 @@
-package models;
+package mvc;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -66,7 +66,7 @@ public class AddUser extends HttpServlet {
 				throw new ServletException(e);
 			}
 		}
-		response.sendRedirect("SignUp");
+		response.sendRedirect("Login");
 			
 			
 
