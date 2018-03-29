@@ -32,55 +32,50 @@ public class ProfileController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		 RequestDispatcher dispatcher =
-		 request.getRequestDispatcher("/WEB-INF/Profile.jsp");
-		 dispatcher.forward(request, response);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/Profile.jsp");
+		dispatcher.forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		//get parameters 
+		// get parameters
 		String email = request.getParameter("email");
 		String ps = request.getParameter("password");
-		
-		
-		
-			
-			Connection c = null;
-			try {
-				String url = "jdbc:mysql://cs3.calstatela.edu/cs3220stu49"; 
-				String 																							username = "cs3220stu49";
-				String 																							password ="#Enwva2#";
-				
-				c = DriverManager.getConnection(url, username, password);
-				String sql = "select * from users where email = ? and password = ?";
-				PreparedStatement pstmt = c.prepareStatement(sql);
-				pstmt.setString(1, email);
-				pstmt.setString(2, ps);
-				
-				ResultSet rs = pstmt.executeQuery();
-				
-				while (rs.next()) {
-					RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/Profile.jsp");
-					dispatcher.forward(request, response);
-					return;
-				}
-				response.sendRedirect("Login");
+
+		Connection c = null;
+		try {
+			String url = "jdbc:mysql://cs3.calstatela.edu/cs3220stu49";
+			String username = "cs3220stu49";
+			String password = "#Enwva2#";
+
+			c = DriverManager.getConnection(url, username, password);
+			//change name of database
+			String sql = "select * from Users2 where email = ? and password = ?";
+			PreparedStatement pstmt = c.prepareStatement(sql);
+			pstmt.setString(1, email);
+			pstmt.setString(2, ps);
+
+			ResultSet rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/Profile.jsp");
+				dispatcher.forward(request, response);
 				return;
-				
+			}
+			response.sendRedirect("Login");
+			return;
+
+		} catch (SQLException e) {
+			throw new ServletException(e);
+		} finally {
+			try {
+				if (c != null)
+					c.close();
 			} catch (SQLException e) {
 				throw new ServletException(e);
-			} finally {
-				try {
-					if (c != null)
-						c.close();
-				} catch (SQLException e) {
-					throw new ServletException(e);
-				}
 			}
-		
-		
-		
-	} 
+		}
 
 	}
+
+}
