@@ -8,6 +8,9 @@
 !src/**
 !ban
 !ban/**
+!resources
+!resources/**
+
 
 !WebContent
 !WebContent/**
