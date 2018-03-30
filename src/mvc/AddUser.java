@@ -29,37 +29,46 @@ public class AddUser extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		//get parameters from Sign up form
+		// get parameters from Sign up form
 		String first = request.getParameter("FirstName");
 		String second = request.getParameter("LastName");
 		String email = request.getParameter("email");
+		String username2 = request.getParameter("username");
+		String phone = request.getParameter("phone");
 		String ps1 = request.getParameter("password1");
 		String ps2 = request.getParameter("password2");
-		
-		//validation here
-		if (first == null || first.trim().length() == 0 || second == null || second.trim().length() == 0 || email == null ||
-				email.trim().length() == 0 || ps1 == null || ps1.trim().length() == 0 || ps2 == null || ps2.trim().length() == 0) {
+
+		// validation for null or empty values
+		if (first == null || first.trim().length() == 0 || second == null || second.trim().length() == 0
+				|| email == null || email.trim().length() == 0 || ps1 == null || ps1.trim().length() == 0 || ps2 == null
+				|| ps2.trim().length() == 0 || username2.trim().length() == 0 || username2 == null) {
 			response.sendRedirect("SignUp");
 			return;
 		}
-		//response.sendRedirect("SignUp");
-		//connection to database
+
+		// validate for calstatela email here.
+		// validate for duplicates here.
+
+		// connection to database
 		// query to add person to database
 		Connection c = null;
 		try {
-			String url = "jdbc:mysql://cs3.calstatela.edu/cs3220stu49"; 
-																													String username = "cs3220stu49";
-																													String password ="#Enwva2#";
-			
-			String sql = "INSERT INTO `users` (`FirstName`, `LastName`, `email`, `password`) VALUES (?, ?, ?, ?);";
-			//String sql = "INSERT INTO `users` (`FirstName`, `LastName`, `email`, `password`) VALUES (?, ?, ?, ?);";
+			String url = "jdbc:mysql://cs3.calstatela.edu/cs3220stu49";
+			String username = "cs3220stu49";
+			String password = "#Enwva2#";
+			// change database to correct one after switching
+			// String sql = "INSERT INTO `Users2` (`FirstName`, `LastName`,`UserName`,
+			// `EMail`,`Phone` `PASSWORD`) VALUES (?, ?, ?, ?, ?, ?);";
+			String sql = "INSERT INTO `Users2` (`UserID`, `FirstName`, `LastName`, `UserName`, `EMail`, `Phone`, `PASSWORD`) VALUES (NULL,?,?,?,?,?,?);";
 			c = DriverManager.getConnection(url, username, password);
 			PreparedStatement pstmt = c.prepareStatement(sql);
 			pstmt.setString(1, first);
 			pstmt.setString(2, second);
-			pstmt.setString(3, email);
-			pstmt.setString(4, ps1);
-			
+			pstmt.setString(3, username2);
+			pstmt.setString(4, email);
+			pstmt.setString(5, phone);
+			pstmt.setString(6, ps1);
+
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
 			throw new ServletException(e);
@@ -72,8 +81,6 @@ public class AddUser extends HttpServlet {
 			}
 		}
 		response.sendRedirect("Login");
-			
-			
 
 	}
 

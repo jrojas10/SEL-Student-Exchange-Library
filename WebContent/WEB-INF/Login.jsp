@@ -20,7 +20,7 @@
         </div>
         <form action="Profile" method="post">
             <div class="form-group">
-                <label>Username (E-mail Address)</label>
+                <label>E-mail Address</label>
                 <input class="form-control" type="email" name="email" placeholder="Email">
             </div>
             <div class="form-group">

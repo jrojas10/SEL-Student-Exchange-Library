@@ -3,24 +3,28 @@ package models;
 public class Book {
 
 	int id;
-	String name;
-	String author;
+	double price;
+	String title;
 	String isbn;
-	String category;
+	String authorFirst;
+	String authorLast;
+	String subject;
 	String course;
-	String condition;
-	int price;
-	
+	String state;
 
-	public Book(int id, String name, String author, String isbn, String category, String condition, String course, int price) {
+	public Book(int id, double price, String title, String isbn, String authorFirst, String authorLast, String subject,
+			String course, String state) {
+
 		this.id = id;
-		this.name = name;
-		this.author = author;
-		this.isbn = isbn;
-		this.category = category;
-		this.condition = condition;
-		this.course = course;
 		this.price = price;
+		this.title = title;
+		this.isbn = isbn;
+		this.authorFirst = authorFirst;
+		this.authorLast = authorLast;
+		this.subject = subject;
+		this.course = course;
+		this.state = state;
+
 	}
 
 	public int getId() {
@@ -31,36 +35,20 @@ public class Book {
 		this.id = id;
 	}
 
-	public String getCourse() {
-		return course;
+	public double getPrice() {
+		return price;
 	}
 
-	public void setCourse(String course) {
-		this.course = course;
+	public void setPrice(double price) {
+		this.price = price;
 	}
 
-	public String getCondition() {
-		return condition;
+	public String getTitle() {
+		return title;
 	}
 
-	public void setCondition(String condition) {
-		this.condition = condition;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public String getAuthor() {
-		return author;
-	}
-
-	public void setAuthor(String author) {
-		this.author = author;
+	public void setTitle(String title) {
+		this.title = title;
 	}
 
 	public String getIsbn() {
@@ -71,11 +59,44 @@ public class Book {
 		this.isbn = isbn;
 	}
 
-	public String getCategory() {
-		return category;
+	public String getAuthorFirst() {
+		return authorFirst;
 	}
 
-	public void setCategory(String category) {
-		this.category = category;
+	public void setAuthorFirst(String authorFirst) {
+		this.authorFirst = authorFirst;
 	}
+
+	public String getAuthorLast() {
+		return authorLast;
+	}
+
+	public void setAuthorLast(String authorLast) {
+		this.authorLast = authorLast;
+	}
+
+	public String getSubject() {
+		return subject;
+	}
+
+	public void setSubject(String subject) {
+		this.subject = subject;
+	}
+
+	public String getCourse() {
+		return course;
+	}
+
+	public void setCourse(String course) {
+		this.course = course;
+	}
+
+	public String getState() {
+		return state;
+	}
+
+	public void setState(String state) {
+		this.state = state;
+	}
+
 }
