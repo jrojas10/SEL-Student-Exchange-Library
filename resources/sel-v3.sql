@@ -19,7 +19,7 @@ CREATE TABLE Users (
     UserName VARCHAR(10) NOT NULL,
     EMail VARCHAR(35) NOT NULL,
     Phone VARCHAR(15) NULL,
-	Password VARCHAR(20) NOT NULL
+	Password VARCHAR(25) NOT NULL
 );
 
 CREATE TABLE Books (
@@ -52,11 +52,11 @@ CREATE TABLE Posts (
 
 -- Users
 
-INSERT INTO Users VALUES (0, "John", "Doe", "john-doe", "john@doe.com", "323-675-9982");
-INSERT INTO Users VALUES (0, "Jane", "Smith", "jane-smith", "jane@smith.com", "323-123-1234");
-INSERT INTO Users VALUES (0, "Kelly", "Mill", "kelly-mill", "kelly@mill.com", "323-592-7574");
-INSERT INTO Users VALUES (0, "Joe", "Davis", "joe-davis", "joe@davis.com", NULL);
-INSERT INTO Users VALUES (0, "Ashley", "Lopez", "ashley-lopez", "ashley@lopez.com", NULL);
+INSERT INTO Users VALUES (0, "John", "Doe", "john-doe", "john@doe.com", "323-675-9982", "password");
+INSERT INTO Users VALUES (0, "Jane", "Smith", "jane-smith", "jane@smith.com", "323-123-1234", "password");
+INSERT INTO Users VALUES (0, "Kelly", "Mill", "kelly-mill", "kelly@mill.com", "323-592-7574", "password");
+INSERT INTO Users VALUES (0, "Joe", "Davis", "joe-davis", "joe@davis.com", NULL, "password");
+INSERT INTO Users VALUES (0, "Ashley", "Lopez", "ashley-lopez", "ashley@lopez.com", NULL, "password");
 
 -- Books
 
@@ -70,10 +70,10 @@ INSERT INTO Books VALUES (0, 55.50, "Roots of Rock", "123456789", "Debra", "Some
 
 -- Posts
 
-INSERT INTO Posts VALUES (0, CURDATE(), 1, 1);
-INSERT INTO Posts VALUES (0, CURDATE(), 1, 2);
-INSERT INTO Posts VALUES (0, CURDATE(), 1, 3);
-INSERT INTO Posts VALUES (0, CURDATE(), 2, 4);
-INSERT INTO Posts VALUES (0, CURDATE(), 3, 5);
-INSERT INTO Posts VALUES (0, CURDATE(), 2, 6);
-INSERT INTO Posts VALUES (0, CURDATE(), 3, 7);
+INSERT INTO Posts VALUES (0, CURDATE(), 1, 1, ADDDATE(CURDATE(), 7));
+INSERT INTO Posts VALUES (0, CURDATE(), 1, 2, ADDDATE(CURDATE(), 7));
+INSERT INTO Posts VALUES (0, CURDATE(), 1, 3, ADDDATE(CURDATE(), 7));
+INSERT INTO Posts VALUES (0, CURDATE(), 2, 4, ADDDATE(CURDATE(), 7));
+INSERT INTO Posts VALUES (0, CURDATE(), 3, 5, ADDDATE(CURDATE(), 7));
+INSERT INTO Posts VALUES (0, CURDATE(), 2, 6, ADDDATE(CURDATE(), 7));
+INSERT INTO Posts VALUES (0, CURDATE(), 3, 7, ADDDATE(CURDATE(), 7));
