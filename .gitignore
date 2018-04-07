@@ -12,7 +12,10 @@
 
 !libs
 !libs/**
-
+!ban
+!ban/**
+!resources
+!resources/**
 
 !*.txt
 !*.md
