@@ -15,6 +15,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import models.Config;
+
 @WebServlet("/Profile")
 public class ProfileController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -45,9 +47,13 @@ public class ProfileController extends HttpServlet {
 		Connection c = null;
 		try {
 			String url = "jdbc:mysql://cs3.calstatela.edu/cs3220stu49";
-			String username = "cs3220stu49";
-			String password = "#Enwva2#";
+			//String username = "cs3220stu49";
+			//String password = "#Enwva2#";
 
+			Config cfg = new Config();
+			//String url = cfg.getProperty("dbUrl");
+			String username = cfg.getProperty("dbUserName");
+			String password = cfg.getProperty("dbPassword");
 			c = DriverManager.getConnection(url, username, password);
 			//change name of database
 			String sql = "select * from Users2 where email = ? and password = ?";
