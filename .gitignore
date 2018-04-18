@@ -6,8 +6,10 @@
 
 !src
 !src/**
+
 !ban
 !ban/**
+
 !resources
 !resources/**
 
@@ -17,8 +19,10 @@
 
 !libs
 !libs/**
+
 !ban
 !ban/**
+
 !resources
 !resources/**
 
@@ -33,3 +37,4 @@
 
 
 #Additional Specific files to Ignore
+src/models/config.cfg
