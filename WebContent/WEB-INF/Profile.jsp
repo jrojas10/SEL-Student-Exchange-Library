@@ -14,7 +14,7 @@
             <h1>John Doe</h1>
             <p class="lead">This is a student only area.</p>
             <a class="btn btn-primary" href="Logout">Logout</a>
-            <a class="btn btn-primary" href="post">Post a book</a>
+            <a class="btn btn-primary" href="Post">Post a book</a>
         </div>
         <h3>Books<small> John Doe</small></h3>
 		
