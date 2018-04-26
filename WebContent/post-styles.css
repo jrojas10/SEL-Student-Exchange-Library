@@ -10,10 +10,10 @@ body {
   color: #444;
   display: flex;
   flex-flow: column wrap;
-  align-content: center;
+  align-items: center;
   
   background-color: rgba(255, 232, 149, 0.79);
-  background-position: center;
+  background-position: center
 }
 
 h1 {
@@ -28,10 +28,11 @@ form {
   display: flex;
   flex-flow: column wrap;
   align-content: center;
+  
 }
 
 input[type=text], select {
-  width: 70%;
+  width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
   display: inline-block;
@@ -41,7 +42,7 @@ input[type=text], select {
 }
 
 input[type=submit] {
-  width: 70%;
+  width: 100%;
   background-color: #4CAF50;
   color: white;
   padding: 14px 20px;
@@ -57,23 +58,15 @@ input[type=submit]:hover {
 
 input[type=radio] {
   margin: .5em 1.4em;
+}
+
+#btn {
+  width: 30em;
+  margin-bottom: 3em;
+  margin-top: 1em;
+}
+
+.cont {
   display: flex;
-  flex-flow: row nowrap;
-}
-
-.rad_btns {
-    margin-top: 1em;
-    margin-bottom: 1em;
-    display: flex;
-    flex-flow: column nowrap;
-    align-items: flex-start;
-}
-.rad {
-    display: flex;
-    justify-content: flex-start;
-    margin: .2em;
-}
-
-label {
-    margin-top: 1em;
+  justify-content: center;
 }
