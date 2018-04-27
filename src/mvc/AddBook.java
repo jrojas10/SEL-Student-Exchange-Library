@@ -44,15 +44,15 @@ public class AddBook extends HttpServlet {
 				
 		//get parameters
 		String title, aFirst, aLast, isbn, sub, clas, condition, price;
-		
-		title = request.getParameter("title");                  inputs[0] = title;
-		aFirst = request.getParameter("authFirstName");         inputs[1] = aFirst;
-		aLast = request.getParameter("authLastName");           inputs[2] = aLast;
-		isbn = request.getParameter("isbn");                    inputs[3] = isbn;
-		sub = request.getParameter("subject");                  inputs[4] = sub;
-		clas = request.getParameter("ofClass");                 inputs[5] = clas;
-		condition = request.getParameter("condition");          inputs[6] = condition;
-		price = request.getParameter("price");                  inputs[7] = price;
+
+		price = request.getParameter("price");                  inputs[0] = price;
+		title = request.getParameter("title");                  inputs[1] = title;
+		isbn = request.getParameter("isbn");                    inputs[2] = isbn;
+		aFirst = request.getParameter("authFirstName");         inputs[3] = aFirst;
+		aLast = request.getParameter("authLastName");           inputs[4] = aLast;
+		sub = request.getParameter("subject");                  inputs[5] = sub;
+		clas = request.getParameter("ofClass");                 inputs[6] = clas;
+		condition = request.getParameter("condition");          inputs[7] = condition;
 		
 		System.out.println("= = = = = = = ");
 		for ( String str : inputs )
@@ -83,14 +83,11 @@ public class AddBook extends HttpServlet {
 			String sql = "INSERT INTO `Books2` (`BookID`, `Price`, `Title`, `ISBN`, `AuthorFirst`, `AuthorLast`, `Subject`, `Class`, `State`) VALUES (0, ?, ?, ?, ?, ?, ?, ?, ?);";
 			c = DriverManager.getConnection(url, username, password);
 			PreparedStatement pstmt = c.prepareStatement(sql);
-			pstmt.setString(1, title);
-			pstmt.setString(2, aFirst);
-			pstmt.setString(3, aLast);
-			pstmt.setString(4, isbn);
-			pstmt.setString(5, sub);
-			pstmt.setString(6, clas);
-			pstmt.setString(7, condition);
-			pstmt.setString(8, price);
+
+			for ( int i = 0; i < inputs.length; i++ ) {
+				pstmt.setString(i + 1, inputs[i]);
+			}
+			
 			pstmt.executeUpdate();
 			System.out.println("Query successful");
 		} catch (SQLException e) {
