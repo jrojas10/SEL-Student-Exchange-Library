@@ -54,12 +54,8 @@ public class AddBook extends HttpServlet {
 		clas = request.getParameter("ofClass");                 inputs[6] = clas;
 		condition = request.getParameter("condition");          inputs[7] = condition;
 		
-		System.out.println("= = = = = = = ");
-		for ( String str : inputs )
-			System.out.println(str);
-		System.out.println("- - - - - - - -");
 		// check if one or more parameters are empty or null
-		System.out.println(incomplete(inputs));
+		
 		if ( incomplete(inputs) ) {
 			response.sendRedirect("Post");
 			return;
@@ -68,15 +64,14 @@ public class AddBook extends HttpServlet {
 		Connection c = null;
 		try {
 			Config cfg = new Config();
-			//String url = cfg.getProperty("dbUrl");
-			//String username = cfg.getProperty("dbUserName");
-			//String password = cfg.getProperty("dbPassword");
 			
+			//String url = cfg.getProperty("dbUrl");
+			String username = cfg.getProperty("dbUserName");
+			String password = cfg.getProperty("dbPassword");			
 			
 			String url = "jdbc:mysql://cs3.calstatela.edu/cs3220stu49";
-			String username = "cs3220stu49";
-			String password = "#Enwva2#";
-			System.out.println(username + "  " + password);
+			//String username = "cs3220stu49";
+			//String password = "#Enwva2#";
 			
 			// writing database query
 			
@@ -86,12 +81,10 @@ public class AddBook extends HttpServlet {
 
 			for ( int i = 0; i < inputs.length; i++ ) {
 				pstmt.setString(i + 1, inputs[i]);
-			}
-			
+			}			
 			pstmt.executeUpdate();
-			System.out.println("Query successful");
+			
 		} catch (SQLException e) {
-			System.out.println("---- Error ----");
 			throw new ServletException(e);
 		} finally {
 			try {

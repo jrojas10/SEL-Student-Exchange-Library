@@ -18,15 +18,6 @@ public class SignUpController extends HttpServlet {
 		super();
 
 	}
-	public void init(ServletConfig config) throws ServletException {
-		super.init(config);
-
-		try {
-			Class.forName("com.mysql.jdbc.Driver");
-		} catch (ClassNotFoundException e) {
-			throw new ServletException(e);
-		}
-	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
