@@ -5,15 +5,15 @@
     <head>
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1">
-      <title>Made with Brackets</title>
-      <link rel="stylesheet" href="style.css">
+      <title>Post Your Book on SEL!</title>
+      <link rel="stylesheet" href="styling/post-styles.css">
     </head>
 
     <body>
 
       <h1>Post your book on SEL</h1>
 
-      <form action="AddBook" method="get">
+      <form action="AddBook" method="post">
         
         <div class = "item">
           <label>Title</label>

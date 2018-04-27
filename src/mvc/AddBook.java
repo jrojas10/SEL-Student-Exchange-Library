@@ -32,7 +32,6 @@ public class AddBook extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
@@ -46,16 +45,21 @@ public class AddBook extends HttpServlet {
 		//get parameters
 		String title, aFirst, aLast, isbn, sub, clas, condition, price;
 		
-		title = request.getParameter("title");                  inputs[0] = title.trim();
-		aFirst = request.getParameter("authFirstname");         inputs[1] = aFirst.trim();
-		aLast = request.getParameter("authLastName");           inputs[2] = aLast.trim();
-		isbn = request.getParameter("isbn");                    inputs[3] = isbn.trim();
-		sub = request.getParameter("Subject");                  inputs[4] = sub.trim();
-		clas = request.getParameter("ofClass");                 inputs[5] = clas.trim();
-		condition = request.getParameter("condition");          inputs[6] = condition.trim();
-		price = request.getParameter("price");                  inputs[7] = price.trim();
+		title = request.getParameter("title");                  inputs[0] = title;
+		aFirst = request.getParameter("authFirstName");         inputs[1] = aFirst;
+		aLast = request.getParameter("authLastName");           inputs[2] = aLast;
+		isbn = request.getParameter("isbn");                    inputs[3] = isbn;
+		sub = request.getParameter("subject");                  inputs[4] = sub;
+		clas = request.getParameter("ofClass");                 inputs[5] = clas;
+		condition = request.getParameter("condition");          inputs[6] = condition;
+		price = request.getParameter("price");                  inputs[7] = price;
 		
+		System.out.println("= = = = = = = ");
+		for ( String str : inputs )
+			System.out.println(str);
+		System.out.println("- - - - - - - -");
 		// check if one or more parameters are empty or null
+		System.out.println(incomplete(inputs));
 		if ( incomplete(inputs) ) {
 			response.sendRedirect("Post");
 			return;
@@ -65,14 +69,14 @@ public class AddBook extends HttpServlet {
 		try {
 			Config cfg = new Config();
 			//String url = cfg.getProperty("dbUrl");
-			String username = cfg.getProperty("dbUserName");
-			String password = cfg.getProperty("dbPassword");
+			//String username = cfg.getProperty("dbUserName");
+			//String password = cfg.getProperty("dbPassword");
 			
 			
 			String url = "jdbc:mysql://cs3.calstatela.edu/cs3220stu49";
-			//String username = "cs3220stu49";
-			//String password = "#Enwva2#";
-			
+			String username = "cs3220stu49";
+			String password = "#Enwva2#";
+			System.out.println(username + "  " + password);
 			
 			// writing database query
 			
@@ -88,8 +92,9 @@ public class AddBook extends HttpServlet {
 			pstmt.setString(7, condition);
 			pstmt.setString(8, price);
 			pstmt.executeUpdate();
-			
+			System.out.println("Query successful");
 		} catch (SQLException e) {
+			System.out.println("---- Error ----");
 			throw new ServletException(e);
 		} finally {
 			try {
@@ -105,7 +110,7 @@ public class AddBook extends HttpServlet {
 
 	private boolean incomplete(String[] strs) {
 		for (String s : strs) {
-			if ( s.length() == 0 || s == null )
+			if ( s.trim().length() == 0 || s == null )
 				return true;
 		}
 		return false;
