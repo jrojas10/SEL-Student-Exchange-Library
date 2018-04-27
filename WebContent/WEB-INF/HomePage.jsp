@@ -30,8 +30,9 @@
     </ul>
   </div>
 </nav>
+<div class="container">
 <div class="jumbotron">
-  <h1 class="display-3">Student Exchange Library</h1>
+  <h1 class="display-3"> Student Exchange Library</h1>
   <p class="lead">Exchange books with other students.</p>
   <hr class="my-4">
   <p>Explore books.</p>
@@ -50,6 +51,7 @@
 <div class="card">
   <img class="card-img-top" src="/images/pathToYourImage.png" alt="Card image cap">
   <div class="card-body"> Some more card content </div>
+</div>
 </div>
 </body>
 </html>
