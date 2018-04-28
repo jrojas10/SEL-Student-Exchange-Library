@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <title>Post Your Book on SEL!</title>
-      <link rel="stylesheet" href="styling/post-styles.css">
+      <link rel="stylesheet" href="post-styles.css">
     </head>
 
     <body>
@@ -45,7 +45,7 @@
           <input type="text" name="ofClass" placeholder = "Ex. CS-3112">
         </div>
         
-        <div class = "item">
+        <div class = "item state">
           <div class="rad_btns">
             <label>Condition</label>
 
@@ -57,7 +57,7 @@
           </div>
         </div>
         
-        <div class = "item">
+        <div class = "item pri">
           <label>Price </label> 
           <div class="price" style="display: flex;">
             <label> $ </label>

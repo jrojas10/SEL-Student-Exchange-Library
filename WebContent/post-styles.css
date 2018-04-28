@@ -70,3 +70,10 @@ input[type=radio] {
   display: flex;
   justify-content: center;
 }
+
+.item {
+  margin: .65em;
+  display: flex;
+  flex-flow: column nowrap;
+  width: 30em;
+}
