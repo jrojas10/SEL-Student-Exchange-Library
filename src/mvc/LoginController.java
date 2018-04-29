@@ -93,9 +93,14 @@ public class LoginController extends HttpServlet {
 			ResultSet rs = pstmt.executeQuery();
 
 			while (rs.next()) {
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/Profile.jsp");
 
+				User u = new User(rs.getInt("UserID"), rs.getString("FirstName"), rs.getString("LastName"),
+						rs.getString("EMail"), rs.getString("PASSWORD"), rs.getString("UserName"),
+						rs.getString("Phone"));
+				request.setAttribute("u", u);
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/Profile.jsp");
 				dispatcher.forward(request, response);
+
 				return;
 			}
 			response.sendRedirect("Profile");
