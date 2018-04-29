@@ -70,8 +70,6 @@ public class AddBook extends HttpServlet {
 			String password = cfg.getProperty("dbPassword");			
 			
 			String url = "jdbc:mysql://cs3.calstatela.edu/cs3220stu49";
-			//String username = "cs3220stu49";
-			//String password = "#Enwva2#";
 			
 			// writing database query
 			
