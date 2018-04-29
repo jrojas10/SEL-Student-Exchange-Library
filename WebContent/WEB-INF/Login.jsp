@@ -18,7 +18,7 @@
         <div class="page-header">
             <h1>Login</h1>
         </div>
-        <form action="Profile" method="post">
+        <form action="Login" method="post">
             <div class="form-group">
                 <label>E-mail Address</label>
                 <input class="form-control" type="email" name="email" placeholder="Email">
