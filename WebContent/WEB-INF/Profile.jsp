@@ -11,12 +11,12 @@
 <body>
     <div class="container">
         <div class="jumbotron">
-            <h1>${u.firstName} ${u.lastName}</h1>
+            <h1>${user.firstName} ${user.lastName}</h1>
           
             <a class="btn btn-primary" href="Logout">Logout</a>
             <a class="btn btn-primary" href="Post">Post a book</a>
         </div>
-        <h3>Books<small>${u.firstName} ${u.lastName}</small></h3>
+        <h3>Books<small>${user.firstName} ${user.lastName}</small></h3>
 		
         <table class="table table-bordered table-striped table-hover">
             <tr>
