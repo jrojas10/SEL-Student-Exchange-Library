@@ -19,7 +19,13 @@
 			<p class="lead">Click on an image below to view the information
 				of a book</p>
 		</div>
-
+<form class = "form in-line" action = "Search">
+<div class="form-group">
+<input class="form-control" type="text" name="query"  placeholder="Enter your search term(s)">
+<br>
+<input class="form-control btn btn-primary" type="submit" value="Search">
+</div>
+</form>
 		<div class="row">
 
 			<c:forEach items="${books}" var="book">
@@ -29,7 +35,7 @@
 							src="http://via.placeholder.com/150?text=N/A"
 							class="img-responsive img-thumbnail" alt="N/A">
 						</a>
-						<h4 class = "text-center"> <a href = "BookInfo?id=${book.id}"> ${book.title}, ${book.price}, ${book.isbn} </a></h4>
+						<h4 class = "text-center"> <a href = "BookInfo?id=${book.id}"> ${book.title} </a></h4>
 					</div>
 				</div>
 			</c:forEach>
