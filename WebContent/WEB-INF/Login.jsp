@@ -26,11 +26,7 @@
             <div class="form-group">
                 <label>Password</label>
                 <input class="form-control" type="password" name="password" placeholder="Password">
-
-            </div>
-            <div class="checkbox">
-                <label><input type="checkbox" name="rememberMe"> Remember Username</label>
-            </div>
+                <br>
             <button type="submit" class="btn btn-primary">Login</button>
         </form>
 
