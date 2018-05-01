@@ -80,10 +80,10 @@ public class BookSearchController extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String query = request.getParameter("query");
-		System.out.println("query is " + query);
+		
 		ArrayList<Book> books = (ArrayList<Book>) getServletContext().getAttribute("books");
-		System.out.println("list of books");
-		System.out.println(books);
+		
+		
 		ArrayList<Book> results = new ArrayList<Book>();
 		for (Book book : books) {
 			if (query == null || query.equals("") || query.equalsIgnoreCase(book.getTitle()) || query.equalsIgnoreCase(book.getIsbn()) ||
@@ -94,8 +94,8 @@ public class BookSearchController extends HttpServlet {
 			}
 		}
 		
-		System.out.println("results of list that matched");
-		System.out.println(results);
+		
+		
 		books = results;
 		request.setAttribute("books", books);
 		//request.setAttribute("results", results);
