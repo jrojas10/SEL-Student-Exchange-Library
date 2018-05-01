@@ -19,7 +19,7 @@
 			<p class="lead">Click on an image below to view the information
 				of a book</p>
 		</div>
-<form class = "form in-line" action = "Search">
+<form class = "form in-line" action = "Search" method = "post">
 <div class="form-group">
 <input class="form-control" type="text" name="query"  placeholder="Enter your search term(s)">
 <br>

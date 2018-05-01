@@ -1,6 +1,7 @@
 package mvc;
 
 import java.io.IOException;
+import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -71,14 +72,35 @@ public class BookSearchController extends HttpServlet {
 
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("test");
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/Search.jsp");
 		dispatcher.forward(request, response);
 		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String query = request.getParameter("query");
+		System.out.println("query is " + query);
+		ArrayList<Book> books = (ArrayList<Book>) getServletContext().getAttribute("books");
+		System.out.println("list of books");
+		System.out.println(books);
+		ArrayList<Book> results = new ArrayList<Book>();
+		for (Book book : books) {
+			if (query == null || query.equals("") || query.equalsIgnoreCase(book.getTitle()) || query.equalsIgnoreCase(book.getIsbn()) ||
+					query.equalsIgnoreCase(book.getAuthorFirst()) || query.equalsIgnoreCase(book.getAuthorLast()) || query.equalsIgnoreCase(book.getState()) || query.equalsIgnoreCase(book.getSubject()) ||
+					query.equalsIgnoreCase(book.getCourse())) {
+				System.out.println("match: " + book.getTitle());
+				results.add(book);
+			}
+		}
 		
-		doGet(request, response);
-	}
+		System.out.println("results of list that matched");
+		System.out.println(results);
+		books = results;
+		request.setAttribute("books", books);
+		//request.setAttribute("results", results);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/Search.jsp");
+		dispatcher.forward(request, response);
 
+}
 }
