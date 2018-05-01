@@ -1,6 +1,9 @@
 package mvc;
 
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -13,14 +16,15 @@ import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.mysql.jdbc.Connection;
 
 import models.Config;
-import models.Post;
 import models.User;
 
 @WebServlet("/Login")
@@ -29,13 +33,7 @@ public class LoginController extends HttpServlet {
 
 	public void init(ServletConfig config) throws ServletException {
 		super.init(config);
-
-	}
-
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		// ArrayList<User> users = new ArrayList<User>();
-		List<User> users = new ArrayList<User>();
+		ArrayList<User> users = new ArrayList<User>();
 		java.sql.Connection c = null;
 		try {
 			Config cfg = new Config();
@@ -51,6 +49,7 @@ public class LoginController extends HttpServlet {
 						rs.getString("Phone"));
 				users.add(u);
 			}
+			getServletContext().setAttribute("users", users);
 		} catch (SQLException e) {
 			throw new ServletException(e);
 		} finally {
@@ -61,7 +60,44 @@ public class LoginController extends HttpServlet {
 				throw new ServletException(e);
 			}
 		}
-		request.setAttribute("users", users);
+	}
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		@SuppressWarnings("unchecked")
+		ArrayList<User> users = (ArrayList<User>) getServletContext().getAttribute("users");
+
+		String value = null;
+		Cookie[] cookies = request.getCookies();
+
+		if (cookies != null) {
+			for (Cookie cookie : cookies) {
+				if (cookie.getName().equals("User")) {
+					value = cookie.getValue();
+				}
+			}
+		}
+		if (value != null) {
+			for (User user : users) {
+
+				String sID = Integer.toString(user.getId());
+				String sHash = hash(sID);
+
+				if (value.equals(sHash)) {
+
+					HttpSession session = request.getSession();
+					session.setAttribute("authorizedUser", user);
+
+					RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/Profile.jsp");
+					dispatcher.forward(request, response);
+					return;
+				}
+			}
+
+			return;
+		}
+
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/Login.jsp");
 		dispatcher.forward(request, response);
 	}
@@ -94,16 +130,28 @@ public class LoginController extends HttpServlet {
 
 			while (rs.next()) {
 
-				User u = new User(rs.getInt("UserID"), rs.getString("FirstName"), rs.getString("LastName"),
+				User user = new User(rs.getInt("UserID"), rs.getString("FirstName"), rs.getString("LastName"),
 						rs.getString("EMail"), rs.getString("PASSWORD"), rs.getString("UserName"),
 						rs.getString("Phone"));
-				request.setAttribute("u", u);
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/Profile.jsp");
-				dispatcher.forward(request, response);
 
+				//
+				HttpSession session = request.getSession();
+				session.setAttribute("authorizedUser", user);
+
+				String studentId = Integer.toString(user.getId());
+				String value = hash(studentId);
+				Cookie cookie = new Cookie("user", value);
+				cookie.setMaxAge(60 * 60 * 24 * 7);
+				cookie.setPath("/cs3220stu49");
+				response.addCookie(cookie);
+
+				//
+
+				request.setAttribute("u", user);
+				response.sendRedirect("Profile");
 				return;
 			}
-			response.sendRedirect("Profile");
+			response.sendRedirect("Login");
 			return;
 
 		} catch (SQLException e) {
@@ -117,5 +165,29 @@ public class LoginController extends HttpServlet {
 			}
 		}
 
+	}
+
+	public String hash(String s) {
+
+		MessageDigest digest = null;
+		try {
+			digest = MessageDigest.getInstance("SHA-256");
+		} catch (NoSuchAlgorithmException e) {
+
+			e.printStackTrace();
+		}
+		byte[] encodedhash = digest.digest(s.getBytes(StandardCharsets.UTF_8));
+		return bytesToHex(encodedhash);
+	}
+
+	private static String bytesToHex(byte[] hash) {
+		StringBuffer hexString = new StringBuffer();
+		for (int i = 0; i < hash.length; i++) {
+			String hex = Integer.toHexString(0xff & hash[i]);
+			if (hex.length() == 1)
+				hexString.append('0');
+			hexString.append(hex);
+		}
+		return hexString.toString();
 	}
 }
