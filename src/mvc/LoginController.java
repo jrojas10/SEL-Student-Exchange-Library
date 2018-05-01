@@ -31,36 +31,36 @@ import models.User;
 public class LoginController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	public void init(ServletConfig config) throws ServletException {
-		super.init(config);
-		ArrayList<User> users = new ArrayList<User>();
-		java.sql.Connection c = null;
-		try {
-			Config cfg = new Config();
-			String username = cfg.getProperty("dbUserName");
-			String password = cfg.getProperty("dbPassword");
-			String url = "jdbc:mysql://cs3.calstatela.edu/cs3220stu49";
-			c = DriverManager.getConnection(url, username, password);
-			Statement stmt = c.createStatement();
-			ResultSet rs = stmt.executeQuery("select * from Users2");
-			while (rs.next()) {
-				User u = new User(rs.getInt("UserID"), rs.getString("FirstName"), rs.getString("LastName"),
-						rs.getString("EMail"), rs.getString("PASSWORD"), rs.getString("UserName"),
-						rs.getString("Phone"));
-				users.add(u);
-			}
-			getServletContext().setAttribute("users", users);
-		} catch (SQLException e) {
-			throw new ServletException(e);
-		} finally {
-			try {
-				if (c != null)
-					c.close();
-			} catch (SQLException e) {
-				throw new ServletException(e);
-			}
-		}
-	}
+//	public void init(ServletConfig config) throws ServletException {
+//		super.init(config);
+//		ArrayList<User> users = new ArrayList<User>();
+//		java.sql.Connection c = null;
+//		try {
+//			Config cfg = new Config();
+//			String username = cfg.getProperty("dbUserName");
+//			String password = cfg.getProperty("dbPassword");
+//			String url = "jdbc:mysql://cs3.calstatela.edu/cs3220stu49";
+//			c = DriverManager.getConnection(url, username, password);
+//			Statement stmt = c.createStatement();
+//			ResultSet rs = stmt.executeQuery("select * from Users2");
+//			while (rs.next()) {
+//				User u = new User(rs.getInt("UserID"), rs.getString("FirstName"), rs.getString("LastName"),
+//						rs.getString("EMail"), rs.getString("PASSWORD"), rs.getString("UserName"),
+//						rs.getString("Phone"));
+//				users.add(u);
+//			}
+//			getServletContext().setAttribute("users", users);
+//		} catch (SQLException e) {
+//			throw new ServletException(e);
+//		} finally {
+//			try {
+//				if (c != null)
+//					c.close();
+//			} catch (SQLException e) {
+//				throw new ServletException(e);
+//			}
+//		}
+//	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -88,9 +88,9 @@ public class LoginController extends HttpServlet {
 
 					HttpSession session = request.getSession();
 					session.setAttribute("authorizedUser", user);
-
-					RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/Profile.jsp");
-					dispatcher.forward(request, response);
+					response.sendRedirect("Profile");
+				//	RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/Profile.jsp");
+					//dispatcher.forward(request, response);
 					return;
 				}
 			}
@@ -147,7 +147,7 @@ public class LoginController extends HttpServlet {
 
 				//
 
-				request.setAttribute("u", user);
+				//request.setAttribute("u", user);
 				response.sendRedirect("Profile");
 				return;
 			}
