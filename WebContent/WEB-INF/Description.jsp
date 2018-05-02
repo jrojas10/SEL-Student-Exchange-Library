@@ -1,8 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<jsp:useBean id = "bb" class = "models.Book"/>
-<jsp:setProperty name = "bb" property ="*"/>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -31,7 +30,7 @@
 						<strong><em><div class="title">${books[param.id].title}</div></em></strong>
 						<div class="auth-box">
 							<div>by :</div>
-							<div class="author">${books[param.id].authorFirst} </div>
+							<div class="author">${books[param.id].authorFirst} ${books[param.id].authroLast} </div>
 						</div>
 					</div>
 				</div>
