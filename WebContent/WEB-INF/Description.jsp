@@ -12,6 +12,13 @@
 </head>
 
 <body>
+	<form class="form in-line" action="Search" method="post">
+		<div class="form-group">
+			<input class="form-control" type="text" name="query"
+				placeholder="Enter your search term(s)"> <br> <input
+				class="form-control btn btn-primary" type="submit" value="Search">
+		</div>
+	</form>
 
 	<div class="page">
 

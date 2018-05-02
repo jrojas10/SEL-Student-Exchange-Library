@@ -18,9 +18,9 @@
 			<a class="navbar-brand" href="Home">SEL</a>
 		</div>
 		<ul class="nav navbar-nav">
-			<li class="active"><a href="Home">Home</a></li>
+			<li><a href="Home">Home</a></li>
 			<li><a href="Post">Post</a></li>
-			<li><a href="Profile">User Profile</a></li>
+			<li class="active"><a href="Profile">User Profile</a></li>
 		</ul>
 		<ul class="nav navbar-nav navbar-right">
 			<li><a href="SignUp"><span class="glyphicon glyphicon-user"></span>
