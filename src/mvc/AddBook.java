@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import models.Config;
+import models.User;
 
 /**
  * Servlet implementation class AddBook
@@ -39,6 +40,9 @@ public class AddBook extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		User user = (User) request.getSession().getAttribute("authorizedUser");
+		request.setAttribute("user", user);		
 		
 		String[] inputs = new String[8];
 				
@@ -82,6 +86,9 @@ public class AddBook extends HttpServlet {
 			}			
 			pstmt.executeUpdate();
 			
+			String sql_2 = "INSERT INTO `Posts` VALUES (0, ?, ?, ?, ?);";
+			PreparedStatement pstmt_2 = c.prepareStatement(sql_2);
+			
 		} catch (SQLException e) {
 			throw new ServletException(e);
 		} finally {
@@ -96,7 +103,7 @@ public class AddBook extends HttpServlet {
 		
 	}
 
-	private boolean incomplete(String[] strs) {
+	private boolean incomplete(String[] strs, String q) {
 		for (String s : strs) {
 			if ( s.trim().length() == 0 || s == null )
 				return true;
