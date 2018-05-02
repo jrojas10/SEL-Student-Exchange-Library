@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
   <html>
     <head>
       <meta charset="utf-8">
@@ -21,8 +22,8 @@
 	      <a class="navbar-brand" href="#">SEL</a>
 	    </div>
 	    <ul class="nav navbar-nav">
-	      <li class="active"><a href="#">Home</a></li>
-	      <li><a href="#">Post</a></li>
+	      <li class="active"><a href="Home">Home</a></li>
+	      <li><a href="Post">Post</a></li>
 	      <li><a href="Profile">User Profile</a></li>
 	    </ul>
 	    <ul class="nav navbar-nav navbar-right">
