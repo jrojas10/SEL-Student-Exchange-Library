@@ -11,77 +11,46 @@ import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import models.Config;
+import models.User;
 
 @WebServlet("/Profile")
 public class ProfileController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	public void init(ServletConfig config) throws ServletException {
-		super.init(config);
+	
+	@SuppressWarnings("unused")
+	private String getCookie( HttpServletRequest request )
+    {
+        Cookie[] cookies = request.getCookies();
+        if( cookies != null )
+            for( Cookie cookie : cookies )
+                if( cookie.getName().equals( "student" ) )
+                    return cookie.getValue();
 
-	}
-
-	public ProfileController() {
-		super();
-
-	}
+        return null;
+    }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+		
+		User user = (User) request.getSession().getAttribute("authorizedUser");
+		request.setAttribute("user", user);
+		if (user == null ) {
+			response.sendRedirect("Login");
+		}
+		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/Profile.jsp");
 		dispatcher.forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// get parameters
-		String email = request.getParameter("email");
-		String ps = request.getParameter("password");
-
-		Connection c = null;
-		try {
-			String url = "jdbc:mysql://cs3.calstatela.edu/cs3220stu49";
-			//String username = "cs3220stu49";
-			//String password = "#Enwva2#";
-
-			Config cfg = new Config();
-			//String url = cfg.getProperty("dbUrl");
-			String username = cfg.getProperty("dbUserName");
-			String password = cfg.getProperty("dbPassword");
-			c = DriverManager.getConnection(url, username, password);
-			//change name of database
-			String sql = "select * from Users2 where email = ? and password = ?";
-			PreparedStatement pstmt = c.prepareStatement(sql);
-			pstmt.setString(1, email);
-			pstmt.setString(2, ps);
-
-			ResultSet rs = pstmt.executeQuery();
-
-			while (rs.next()) {
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/Profile.jsp");
-				dispatcher.forward(request, response);
-				return;
-			}
-			response.sendRedirect("Login");
-			return;
-
-		} catch (SQLException e) {
-			throw new ServletException(e);
-		} finally {
-			try {
-				if (c != null)
-					c.close();
-			} catch (SQLException e) {
-				throw new ServletException(e);
-			}
-		}
-
+		
 	}
-
 }

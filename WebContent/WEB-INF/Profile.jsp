@@ -27,12 +27,12 @@
 </nav>
     <div class="container">
         <div class="jumbotron">
-            <h1>John Doe</h1>
-            <p class="lead">This is a student only area.</p>
+            <h1>${user.firstName} ${user.lastName}</h1>
+          
             <a class="btn btn-primary" href="Logout">Logout</a>
             <a class="btn btn-primary" href="Post">Post a book</a>
         </div>
-        <h3>Books<small> John Doe</small></h3>
+        <h3>Books<small>${user.firstName} ${user.lastName}</small></h3>
 		
         <table class="table table-bordered table-striped table-hover">
             <tr>

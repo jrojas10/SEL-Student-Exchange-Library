@@ -56,16 +56,12 @@ public class AddUser extends HttpServlet {
 		Connection c = null;
 		try {
 			Config cfg = new Config();
-			//String url = cfg.getProperty("dbUrl");
+
 			String username = cfg.getProperty("dbUserName");
 			String password = cfg.getProperty("dbPassword");
-			
-			
+
 			String url = "jdbc:mysql://cs3.calstatela.edu/cs3220stu49";
-			//String username = "cs3220stu49";
-			//String password = "#Enwva2#";
-			
-			
+
 			// change database to correct one after switching
 			// String sql = "INSERT INTO `Users2` (`FirstName`, `LastName`,`UserName`,
 			// `EMail`,`Phone` `PASSWORD`) VALUES (?, ?, ?, ?, ?, ?);";

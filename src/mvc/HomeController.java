@@ -3,6 +3,7 @@ package mvc;
 import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -15,7 +16,16 @@ public class HomeController extends HttpServlet {
 
 	public HomeController() {
 		super();
+	}	
 
+	public void init(ServletConfig config) throws ServletException {
+		super.init(config);
+
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+		} catch (ClassNotFoundException e) {
+			throw new ServletException(e);
+		}
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)

@@ -34,7 +34,7 @@
         <div class="page-header">
             <h1>Login</h1>
         </div>
-        <form action="Profile" method="post">
+        <form action="Login" method="post">
             <div class="form-group">
                 <label>E-mail Address</label>
                 <input class="form-control" type="email" name="email" placeholder="Email">
@@ -42,11 +42,7 @@
             <div class="form-group">
                 <label>Password</label>
                 <input class="form-control" type="password" name="password" placeholder="Password">
-
-            </div>
-            <div class="checkbox">
-                <label><input type="checkbox" name="rememberMe"> Remember Username</label>
-            </div>
+                <br>
             <button type="submit" class="btn btn-primary">Login</button>
         </form>
 
