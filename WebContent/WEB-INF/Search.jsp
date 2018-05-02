@@ -28,14 +28,14 @@
 </form>
 		<div class="row">
 
-			<c:forEach items="${books}" var="book">
+			<c:forEach items="${results}" var="book">
 				<div class="col-sm-4 text-center">
 					<div class="well">
-						<a href="BookInfo?id=${book.id}"> <img style="height: 150px;"
+						<a href="Description?id=${book.id-1}"> <img style="height: 150px;"
 							src="http://via.placeholder.com/150?text=N/A"
 							class="img-responsive img-thumbnail" alt="N/A">
 						</a>
-						<h4 class = "text-center"> <a href = "BookInfo?id=${book.id}"> ${book.title} </a></h4>
+						<h4 class = "text-center"> <a href = "Description?id=${book.id}"> ${book.title} </a></h4>
 					</div>
 				</div>
 			</c:forEach>
