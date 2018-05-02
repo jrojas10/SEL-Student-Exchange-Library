@@ -62,7 +62,9 @@ public class AddUser extends HttpServlet {
 
 			String url = "jdbc:mysql://cs3.calstatela.edu/cs3220stu49";
 			// `EMail`,`Phone` `PASSWORD`) VALUES (?, ?, ?, ?, ?, ?);";
-			String sql = "INSERT INTO `User` (`UserID`, `FirstName`, `LastName`, `UserName`, `EMail`, `Phone`, `PASSWORD`) VALUES (NULL,?,?,?,?,?,?);";
+
+			String sql = "INSERT INTO `Users` (`UserID`, `FirstName`, `LastName`, `UserName`, `EMail`, `Phone`, `PASSWORD`) VALUES (NULL,?,?,?,?,?,?);";
+
 			c = DriverManager.getConnection(url, username, password);
 			PreparedStatement pstmt = c.prepareStatement(sql);
 			pstmt.setString(1, first);
