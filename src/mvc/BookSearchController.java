@@ -44,7 +44,7 @@ public class BookSearchController extends HttpServlet {
 			String url = "jdbc:mysql://cs3.calstatela.edu/cs3220stu49";
 			c = DriverManager.getConnection(url, username, password);
 			java.sql.Statement stmt = c.createStatement();
-			ResultSet rs = stmt.executeQuery("select * from Books2");
+			ResultSet rs = stmt.executeQuery("select * from Books");
 			while (rs.next()) {
 				Book book = new Book(rs.getInt("BookID"), rs.getDouble("Price"), rs.getString("Title"),
 						rs.getString("ISBN"), rs.getString("AuthorFirst"), rs.getString("AuthorLast"),
