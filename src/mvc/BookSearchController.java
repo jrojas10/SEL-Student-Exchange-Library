@@ -84,18 +84,19 @@ public class BookSearchController extends HttpServlet {
 		ArrayList<Book> books = (ArrayList<Book>) getServletContext().getAttribute("books");
 		
 		
-		ArrayList<Book> results = new ArrayList<Book>();
-		for (Book book : books) {
-			
-			if (query == null || query.equals("") || query.equalsIgnoreCase(book.getTitle()) || query.equalsIgnoreCase(book.getIsbn()) ||
-					query.equalsIgnoreCase(book.getAuthorFirst()) || query.equalsIgnoreCase(book.getAuthorLast()) || query.equalsIgnoreCase(book.getState()) || query.equalsIgnoreCase(book.getSubject()) ||
-					query.equalsIgnoreCase(book.getCourse()) || book.getTitle().toLowerCase().contains(query.toLowerCase()) || book.getAuthorFirst().toLowerCase().contains(query.toLowerCase()) || 
-					book.getAuthorFirst().toLowerCase().contains(query.toLowerCase())){
-				System.out.println("match: " + book.getTitle());
+		ArrayList<Book> results = hasMatches(books, query);
 				
-				results.add(book);
-			}
-		}
+//		for (Book book : books) {
+//			
+//			if (query == null || query.equals("") || query.equalsIgnoreCase(book.getTitle()) || query.equalsIgnoreCase(book.getIsbn()) ||
+//					query.equalsIgnoreCase(book.getAuthorFirst()) || query.equalsIgnoreCase(book.getAuthorLast()) || query.equalsIgnoreCase(book.getState()) || query.equalsIgnoreCase(book.getSubject()) ||
+//					query.equalsIgnoreCase(book.getCourse()) || book.getTitle().toLowerCase().contains(query.toLowerCase()) || book.getAuthorFirst().toLowerCase().contains(query.toLowerCase()) || 
+//					book.getAuthorFirst().toLowerCase().contains(query.toLowerCase())){
+//				System.out.println("match: " + book.getTitle());
+//				
+//				results.add(book);
+//			}
+//		}
 		
 		
 		
@@ -105,5 +106,40 @@ public class BookSearchController extends HttpServlet {
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/Search.jsp");
 		dispatcher.forward(request, response);
 
-}
+	}
+	
+	private ArrayList<Book> hasMatches(ArrayList<Book> books, String comparater) {
+		
+		ArrayList<Book> results = new ArrayList<>();
+		for ( Book book : books ) {
+			if ( isMatch(book, comparater) ) {
+				results.add(book);
+				System.out.println("match: " + book.getTitle() );
+			}
+		}
+		return results;
+	}
+	
+	private boolean isMatch( Book book, String comparater ) {
+				
+		if ( comparater.trim().length() == 0 || comparater == null )
+			return false;
+		
+		String query = comparater.toLowerCase();
+		
+			if ( book.getTitle().toLowerCase().contains( query ) )
+				return true;
+			if ( book.getAuthorFirst().toLowerCase().contains( query ) )
+				return true;
+			if ( book.getAuthorLast().toLowerCase().contains( query ) )
+				return true;
+			if ( book.getSubject().toLowerCase().contains( query ) )
+				return true;
+			if ( book.getCourse().toLowerCase().contains(query) ) 
+				return true;
+			if ( book.getIsbn().equals(query) )
+				return true;
+		
+		return false;
+	}
 }
