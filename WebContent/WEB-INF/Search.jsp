@@ -54,7 +54,7 @@
 							class="img-responsive img-thumbnail" alt="N/A">
 						</a>
 						<h4 class="text-center">
-							<a href="Description?id=${book.id}"> ${book.title} </a>
+							<a href="Description?id=${book.id-1}"> ${book.title} </a>
 						</h4>
 					</div>
 				</div>

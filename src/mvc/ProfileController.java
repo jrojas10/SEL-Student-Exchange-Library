@@ -43,6 +43,7 @@ public class ProfileController extends HttpServlet {
 		request.setAttribute("user", user);
 		if (user == null ) {
 			response.sendRedirect("Login");
+			return;
 		}
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/Profile.jsp");
