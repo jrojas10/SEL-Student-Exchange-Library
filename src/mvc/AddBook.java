@@ -73,7 +73,7 @@ public class AddBook extends HttpServlet {
 			
 			// writing database query
 			
-			String sql = "INSERT INTO `Books2` (`BookID`, `Price`, `Title`, `ISBN`, `AuthorFirst`, `AuthorLast`, `Subject`, `Class`, `State`) VALUES (0, ?, ?, ?, ?, ?, ?, ?, ?);";
+			String sql = "INSERT INTO `Books` (`BookID`, `Price`, `Title`, `ISBN`, `AuthorFirst`, `AuthorLast`, `Subject`, `Class`, `State`) VALUES (0, ?, ?, ?, ?, ?, ?, ?, ?);";
 			c = DriverManager.getConnection(url, username, password);
 			PreparedStatement pstmt = c.prepareStatement(sql);
 

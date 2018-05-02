@@ -121,7 +121,7 @@ public class LoginController extends HttpServlet {
 			String password = cfg.getProperty("dbPassword");
 			c = DriverManager.getConnection(url, username, password);
 			// change name of database
-			String sql = "select * from Users2 where email = ? and password = ?";
+			String sql = "select * from Users where email = ? and password = ?";
 			PreparedStatement pstmt = c.prepareStatement(sql);
 			pstmt.setString(1, email);
 			pstmt.setString(2, ps);

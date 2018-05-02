@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -14,44 +15,57 @@
 
 </head>
 <body>
-<nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="#">SEL</a>
-    </div>
-    <ul class="nav navbar-nav">
-      <li class="active"><a href="#">Home</a></li>
-      <li><a href="Post">Post</a></li>
-      <li><a href="Profile">User Profile</a></li>
-    </ul>
-    <ul class="nav navbar-nav navbar-right">
-      <li><a href="SignUp"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-      <li><a href="Login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-    </ul>
-  </div>
-</nav>
-<div class="container">
-<div class="jumbotron">
-  <h1 class="display-3"> Student Exchange Library</h1>
-  <p class="lead">Exchange books with other students.</p>
-  <hr class="my-4">
-  <p>Explore books.</p>
-  <p class="lead">
-    <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
-          <form class="navbar-form navbar-left" role="search">
-    <div class="form-group">
-        <input type="text" class="form-control" placeholder="Search"></input>
-    </div>
-  </p>
-</div>
-<div class="card">
-  <img class="card-img-top" src="/images/pathToYourImage.png" alt="Card image cap">
-  <div class="card-body"> Some more card content </div>
-</div>
-<div class="card">
-  <img class="card-img-top" src="/images/pathToYourImage.png" alt="Card image cap">
-  <div class="card-body"> Some more card content </div>
-</div>
-</div>
+	<nav class="navbar navbar-inverse">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<a class="navbar-brand" href="Home">SEL</a>
+		</div>
+		<ul class="nav navbar-nav">
+			<li class="active"><a href="Home">Home</a></li>
+			<li><a href="Post">Post</a></li>
+			<li><a href="Profile">User Profile</a></li>
+		</ul>
+		<ul class="nav navbar-nav navbar-right">
+			<li><a href="SignUp"><span class="glyphicon glyphicon-user"></span>
+					Sign Up</a></li>
+			<li><a href="Login"><span class="glyphicon glyphicon-log-in"></span>
+					Login</a></li>
+		</ul>
+	</div>
+	</nav>
+	<div class="container">
+		<div class="jumbotron">
+			<h1 class="display-3">Student Exchange Library</h1>
+			<p class="lead">Exchange books with other students.</p>
+			<hr class="my-4">
+			<p>Explore books.</p>
+			<p class="lead">
+				<a class="btn btn-primary btn-lg" href="#" role="button">Learn
+					more</a>
+			<form class="navbar-form navbar-left" role="search">
+				<div class="form-group">
+					<input type="text" class="form-control" placeholder="Search"></input>
+				</div>
+				</p>
+		</div>
+
+		<div class="row">
+			<c:forEach items="${books}" var="book">
+				<div class="col-sm-4 text-center">
+					<div class="well">
+						<a href="BookInfo?id=${book.id}"> <img style="height: 150px;"
+							src="http://via.placeholder.com/150?text=N/A"
+							class="img-responsive img-thumbnail" alt="N/A">
+						</a>
+						<h4 class="text-center">
+							<a href="BookInfo?id=${book.id}"> ${book.title} </a>
+						</h4>
+					</div>
+				</div>
+			</c:forEach>
+
+
+
+		</div>
 </body>
 </html>
