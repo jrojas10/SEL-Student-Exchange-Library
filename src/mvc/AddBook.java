@@ -103,7 +103,7 @@ public class AddBook extends HttpServlet {
 		
 	}
 
-	private boolean incomplete(String[] strs, String q) {
+	private boolean incomplete(String[] strs) {
 		for (String s : strs) {
 			if ( s.trim().length() == 0 || s == null )
 				return true;
