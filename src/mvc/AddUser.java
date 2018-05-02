@@ -61,11 +61,8 @@ public class AddUser extends HttpServlet {
 			String password = cfg.getProperty("dbPassword");
 
 			String url = "jdbc:mysql://cs3.calstatela.edu/cs3220stu49";
-
-			// change database to correct one after switching
-			// String sql = "INSERT INTO `Users2` (`FirstName`, `LastName`,`UserName`,
 			// `EMail`,`Phone` `PASSWORD`) VALUES (?, ?, ?, ?, ?, ?);";
-			String sql = "INSERT INTO `Users2` (`UserID`, `FirstName`, `LastName`, `UserName`, `EMail`, `Phone`, `PASSWORD`) VALUES (NULL,?,?,?,?,?,?);";
+			String sql = "INSERT INTO `User` (`UserID`, `FirstName`, `LastName`, `UserName`, `EMail`, `Phone`, `PASSWORD`) VALUES (NULL,?,?,?,?,?,?);";
 			c = DriverManager.getConnection(url, username, password);
 			PreparedStatement pstmt = c.prepareStatement(sql);
 			pstmt.setString(1, first);

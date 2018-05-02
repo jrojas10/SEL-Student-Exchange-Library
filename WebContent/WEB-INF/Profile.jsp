@@ -15,6 +15,7 @@
           
             <a class="btn btn-primary" href="Logout">Logout</a>
             <a class="btn btn-primary" href="Post">Post a book</a>
+            <a class="btn btn-primary" href = "Search">Search</a>
         </div>
         <h3>Books<small>${user.firstName} ${user.lastName}</small></h3>
 		

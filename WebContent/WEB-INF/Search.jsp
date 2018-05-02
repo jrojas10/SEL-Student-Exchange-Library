@@ -28,7 +28,7 @@
 </form>
 		<div class="row">
 
-			<c:forEach items="${books}" var="book">
+			<c:forEach items="${results}" var="book">
 				<div class="col-sm-4 text-center">
 					<div class="well">
 						<a href="BookInfo?id=${book.id}"> <img style="height: 150px;"

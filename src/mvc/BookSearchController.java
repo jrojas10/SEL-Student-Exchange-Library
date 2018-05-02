@@ -44,7 +44,7 @@ public class BookSearchController extends HttpServlet {
 			String url = "jdbc:mysql://cs3.calstatela.edu/cs3220stu49";
 			c = DriverManager.getConnection(url, username, password);
 			java.sql.Statement stmt = c.createStatement();
-			ResultSet rs = stmt.executeQuery("select * from Books2");
+			ResultSet rs = stmt.executeQuery("select * from Books");
 			while (rs.next()) {
 				Book book = new Book(rs.getInt("BookID"), rs.getDouble("Price"), rs.getString("Title"),
 						rs.getString("ISBN"), rs.getString("AuthorFirst"), rs.getString("AuthorLast"),
@@ -86,18 +86,21 @@ public class BookSearchController extends HttpServlet {
 		
 		ArrayList<Book> results = new ArrayList<Book>();
 		for (Book book : books) {
+			
 			if (query == null || query.equals("") || query.equalsIgnoreCase(book.getTitle()) || query.equalsIgnoreCase(book.getIsbn()) ||
 					query.equalsIgnoreCase(book.getAuthorFirst()) || query.equalsIgnoreCase(book.getAuthorLast()) || query.equalsIgnoreCase(book.getState()) || query.equalsIgnoreCase(book.getSubject()) ||
-					query.equalsIgnoreCase(book.getCourse())) {
+					query.equalsIgnoreCase(book.getCourse()) || book.getTitle().toLowerCase().contains(query.toLowerCase()) || book.getAuthorFirst().toLowerCase().contains(query.toLowerCase()) || 
+					book.getAuthorFirst().toLowerCase().contains(query.toLowerCase())){
 				System.out.println("match: " + book.getTitle());
+				
 				results.add(book);
 			}
 		}
 		
 		
 		
-		books = results;
-		request.setAttribute("books", books);
+	//	books = results;
+		request.setAttribute("results", results);
 		//request.setAttribute("results", results);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/Search.jsp");
 		dispatcher.forward(request, response);
