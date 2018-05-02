@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <title>Post Your Book on SEL!</title>
-      <link rel="stylesheet" href="post-styles.css">
+      <link rel="stylesheet" href="styles/post-styles.css">
     </head>
 
     <body>
