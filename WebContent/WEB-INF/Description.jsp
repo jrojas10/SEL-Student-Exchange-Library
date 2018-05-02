@@ -30,7 +30,7 @@
 						<strong><em><div class="title">${books[param.id].title}</div></em></strong>
 						<div class="auth-box">
 							<div>by :</div>
-							<div class="author">${books[param.id].authorFirst} ${books[param.id].authroLast} </div>
+							<div class="author">${books[param.id].authorFirst}</div>
 						</div>
 					</div>
 				</div>
