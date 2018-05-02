@@ -13,22 +13,24 @@
 <title>SEL-Register</title>
 </head>
 <body>
-<nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="#">SEL</a>
-    </div>
-    <ul class="nav navbar-nav">
-      <li class="active"><a href="#">Home</a></li>
-      <li><a href="Post">Post</a></li>
-      <li><a href="Profile">User Profile</a></li>
-    </ul>
-    <ul class="nav navbar-nav navbar-right">
-      <li><a href="SignUp"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-      <li><a href="Login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-    </ul>
-  </div>
-</nav>
+	<nav class="navbar navbar-inverse">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<a class="navbar-brand" href="Home">SEL</a>
+		</div>
+		<ul class="nav navbar-nav">
+			<li class="active"><a href="Home">Home</a></li>
+			<li><a href="Post">Post</a></li>
+			<li><a href="Profile">User Profile</a></li>
+		</ul>
+		<ul class="nav navbar-nav navbar-right">
+			<li><a href="SignUp"><span class="glyphicon glyphicon-user"></span>
+					Sign Up</a></li>
+			<li><a href="Login"><span class="glyphicon glyphicon-log-in"></span>
+					Login</a></li>
+		</ul>
+	</div>
+	</nav>
 	<div class="container">
 		<div class="page-header">
 			<h1>
@@ -58,8 +60,7 @@
 			</div>
 			<div class="form-group">
 				<label class="control-label">Phone</label> <input
-					class="form-control" type="text" name="phone"
-					placeholder="Phone">
+					class="form-control" type="text" name="phone" placeholder="Phone">
 			</div>
 
 			<div class="form-group">
