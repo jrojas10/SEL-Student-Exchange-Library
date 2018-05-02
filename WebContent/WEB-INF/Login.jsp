@@ -14,38 +14,39 @@
 <title>SEL-Login</title>
 </head>
 <body>
-<nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="#">SEL</a>
-    </div>
-    <ul class="nav navbar-nav">
-      <li class="active"><a href="#">Home</a></li>
-      <li><a href="Post">Post</a></li>
-      <li><a href="Profile">User Profile</a></li>
-    </ul>
-    <ul class="nav navbar-nav navbar-right">
-      <li><a href="SignUp"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-      <li><a href="Login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-    </ul>
-  </div>
-</nav>
- <div class="container">
-        <div class="page-header">
-            <h1>Login</h1>
-        </div>
-        <form action="Login" method="post">
-            <div class="form-group">
-                <label>E-mail Address</label>
-                <input class="form-control" type="email" name="email" placeholder="Email">
-            </div>
-            <div class="form-group">
-                <label>Password</label>
-                <input class="form-control" type="password" name="password" placeholder="Password">
-                <br>
-            <button type="submit" class="btn btn-primary">Login</button>
-        </form>
+	<nav class="navbar navbar-inverse">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<a class="navbar-brand" href="Home">SEL</a>
+		</div>
+		<ul class="nav navbar-nav">
+			<li class="active"><a href="Home">Home</a></li>
+			<li><a href="Post">Post</a></li>
+			<li><a href="Profile">User Profile</a></li>
+		</ul>
+		<ul class="nav navbar-nav navbar-right">
+			<li><a href="SignUp"><span class="glyphicon glyphicon-user"></span>
+					Sign Up</a></li>
+			<li><a href="Login"><span class="glyphicon glyphicon-log-in"></span>
+					Login</a></li>
+		</ul>
+	</div>
+	</nav>
+	<div class="container">
+		<div class="page-header">
+			<h1>Login</h1>
+		</div>
+		<form action="Login" method="post">
+			<div class="form-group">
+				<label>E-mail Address</label> <input class="form-control"
+					type="email" name="email" placeholder="Email">
+			</div>
+			<div class="form-group">
+				<label>Password</label> <input class="form-control" type="password"
+					name="password" placeholder="Password"> <br>
+				<button type="submit" class="btn btn-primary">Login</button>
+		</form>
 
-    </div>
+	</div>
 </body>
 </html>
