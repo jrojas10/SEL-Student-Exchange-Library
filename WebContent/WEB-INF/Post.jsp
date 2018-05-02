@@ -7,9 +7,30 @@
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <title>Post Your Book on SEL!</title>
       <link rel="stylesheet" href="styles/post-styles.css">
+      <link rel="stylesheet"
+		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+		integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+		crossorigin="anonymous">
     </head>
 
     <body>
+
+	<nav class="navbar navbar-inverse">
+	  <div class="container-fluid">
+	    <div class="navbar-header">
+	      <a class="navbar-brand" href="#">SEL</a>
+	    </div>
+	    <ul class="nav navbar-nav">
+	      <li class="active"><a href="#">Home</a></li>
+	      <li><a href="#">Post</a></li>
+	      <li><a href="Profile">User Profile</a></li>
+	    </ul>
+	    <ul class="nav navbar-nav navbar-right">
+	      <li><a href="SignUp"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+	      <li><a href="Login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+	    </ul>
+	  </div>
+	</nav>
 
       <h1>Post your book on SEL</h1>
 
@@ -49,10 +70,10 @@
           <div class="rad_btns">
             <label>Condition</label>
 
-            <div class = rad> <input type="radio" name="condition">New</div>
-            <div class = rad> <input type="radio" name="condition">Good</div>
-            <div class = rad> <input type="radio" name="condition">Mid</div>
-            <div class = rad> <input type="radio" name="condition">Poor</div>
+            <div class = rad> <input type="radio" name="condition" value="New">New</div>
+            <div class = rad> <input type="radio" name="condition" value="Good">Good</div>
+            <div class = rad> <input type="radio" name="condition" value="Mid">Mid</div>
+            <div class = rad> <input type="radio" name="condition" value="Poor">Poor</div>
 
           </div>
         </div>

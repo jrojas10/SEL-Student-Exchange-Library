@@ -30,7 +30,7 @@ public class ProfileController extends HttpServlet {
         Cookie[] cookies = request.getCookies();
         if( cookies != null )
             for( Cookie cookie : cookies )
-                if( cookie.getName().equals( "student" ) )
+                if( cookie.getName().equals( "user" ) )
                     return cookie.getValue();
 
         return null;
