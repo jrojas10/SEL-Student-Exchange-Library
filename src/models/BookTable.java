@@ -3,16 +3,26 @@ package models;
 import java.sql.Date;
 
 public class BookTable {
+	int id;
 	String title;
 	String price;
 	Date postDate;
 	Date expDate;
 	
-	public BookTable (String title, String price, Date postDate, Date expDate) {
+	public BookTable (int id,String title, String price, Date postDate, Date expDate) {
+		this.id = id;
 		this.title = title;
 		this.price = price;
 		this.postDate = postDate;
 		this.expDate = expDate;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getTitle() {

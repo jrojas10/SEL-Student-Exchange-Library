@@ -60,7 +60,7 @@
 		<td>${book.price}</td>
 		<td>${book.postDate}</td>
 		<td>${book.expDate}</td>
-		<td><a href = "removeBook">Delete</a>
+		<td><a href = "RemoveBook?id=${book.id}" >Delete</a>
 		</tr>
 		</c:forEach>
 		</div>

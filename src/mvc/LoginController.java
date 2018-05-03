@@ -33,36 +33,7 @@ import models.User;
 public class LoginController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-//	public void init(ServletConfig config) throws ServletException {
-//		super.init(config);
-//		ArrayList<User> users = new ArrayList<User>();
-//		java.sql.Connection c = null;
-//		try {
-//			Config cfg = new Config();
-//			String username = cfg.getProperty("dbUserName");
-//			String password = cfg.getProperty("dbPassword");
-//			String url = "jdbc:mysql://cs3.calstatela.edu/cs3220stu49";
-//			c = DriverManager.getConnection(url, username, password);
-//			Statement stmt = c.createStatement();
-//			ResultSet rs = stmt.executeQuery("select * from Users2");
-//			while (rs.next()) {
-//				User u = new User(rs.getInt("UserID"), rs.getString("FirstName"), rs.getString("LastName"),
-//						rs.getString("EMail"), rs.getString("PASSWORD"), rs.getString("UserName"),
-//						rs.getString("Phone"));
-//				users.add(u);
-//			}
-//			getServletContext().setAttribute("users", users);
-//		} catch (SQLException e) {
-//			throw new ServletException(e);
-//		} finally {
-//			try {
-//				if (c != null)
-//					c.close();
-//			} catch (SQLException e) {
-//				throw new ServletException(e);
-//			}
-//		}
-//	}
+
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -155,13 +126,13 @@ public class LoginController extends HttpServlet {
 				pstmt2.setInt(1, rs.getInt("UserID"));
 				ResultSet rs2 = pstmt2.executeQuery();
 				while (rs2.next()) {
-					BookTable posted = new BookTable (rs2.getString("Title"),rs2.getString("Price"),rs2.getDate("PostDate"),rs2.getDate("ExperationDate"));
+					BookTable posted = new BookTable (rs2.getInt("BookID"),rs2.getString("Title"),rs2.getString("Price"),rs2.getDate("PostDate"),rs2.getDate("ExperationDate"));
 					booksPosted.add(posted);
 				}
 				getServletContext().setAttribute("posts", booksPosted);
 				
-
-				//request.setAttribute("u", user);
+			
+				
 				response.sendRedirect("Profile");
 				return;
 			}
