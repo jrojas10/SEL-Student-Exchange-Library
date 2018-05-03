@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import models.Config;
+import models.User;
 
 @WebServlet("/AddUser")
 public class AddUser extends HttpServlet {
@@ -32,25 +33,50 @@ public class AddUser extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// get parameters from Sign up form
-		String first = request.getParameter("FirstName");
-		String second = request.getParameter("LastName");
-		String email = request.getParameter("email");
-		String username2 = request.getParameter("username");
-		String phone = request.getParameter("phone");
-		String ps1 = request.getParameter("password1");
-		String ps2 = request.getParameter("password2");
-
-		// validation for null or empty values
-		if (first == null || first.trim().length() == 0 || second == null || second.trim().length() == 0
-				|| email == null || email.trim().length() == 0 || ps1 == null || ps1.trim().length() == 0 || ps2 == null
-				|| ps2.trim().length() == 0 || username2.trim().length() == 0 || username2 == null) {
+		int code = (int) getServletContext().getAttribute("code");
+		int codeEntered = Integer.parseInt(request.getParameter("key"));
+		boolean match = code == codeEntered;
+		
+		if(!match) {
 			response.sendRedirect("SignUp");
 			return;
 		}
+		
+		User verified = (User) getServletContext().getAttribute("pending");
+//		String first = request.getParameter("FirstName");
+//		String second = request.getParameter("LastName");
+//		String email = request.getParameter("email");
+//		String username2 = request.getParameter("username");
+//		String phone = request.getParameter("phone");
+//		String ps1 = request.getParameter("password1");
+//		String ps2 = request.getParameter("password2");
+
+		String first = verified.getFirstName();
+		String second = verified.getLastName();
+		String email = verified.getEmail();
+		String username2 = verified.getUsername();
+		String ps1 = verified.getPassword();
+		String phone = verified.getPhone();
+		
+		// validation for null or empty values
+		
+		
+//		if (first == null || first.trim().length() == 0 || second == null || second.trim().length() == 0
+//				|| email == null || email.trim().length() == 0 || ps1 == null || ps1.trim().length() == 0 || ps2 == null
+//				|| ps2.trim().length() == 0 || username2.trim().length() == 0 || username2 == null) {
+//			response.sendRedirect("SignUp");
+//			return;
+//		}
 
 		// validate for calstatela email here.
-		// validate for duplicates here.
-
+		
+//		boolean valid = email.toLowerCase().contains("@calstatela.edu");
+//		if(!valid) {
+//			response.sendRedirect("SignUp");
+//			return;
+//		}
+		
+		
 		// connection to database
 		// query to add person to database
 		Connection c = null;
