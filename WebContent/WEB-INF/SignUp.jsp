@@ -50,7 +50,7 @@
 			</div>
 
 			<div class="form-group">
-				<label class="control-label">E-Mail</label> <input
+				<label class="control-label">E-Mail (@calstatela.edu) only</label> <input
 					class="form-control" type="email" name="email" placeholder="E-Mail">
 			</div>
 			<div class="form-group">

@@ -38,3 +38,4 @@
 
 #Additional Specific files to Ignore
 src/models/config.cfg
+!WebContent/lib/mail.jar

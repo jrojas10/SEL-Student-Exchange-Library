@@ -27,7 +27,8 @@ public class VerificationController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		response.sendRedirect("Home");
+		return;
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -58,7 +59,12 @@ public class VerificationController extends HttpServlet {
 		User pending = new User (0,first,second,email,ps2,username2,phone);
 		
 		getServletContext().setAttribute("pending", pending);
-		 int passcode = passcode();
+		
+		
+		
+		 String passcode = passcode();
+		 
+		 
 		 getServletContext().setAttribute("code", passcode);
 			Properties props = new Properties();
 			props.put("mail.smtp.host", "smtp.gmail.com");
@@ -83,7 +89,7 @@ public class VerificationController extends HttpServlet {
 						InternetAddress.parse(email));
 				message.setSubject("SEL-Verification Code");
 				message.setText("Dear SEL user," +
-						"\n\n This is your verification code: " + passcode + "\n\n Please enter this code in the sign up page to complete your verification");
+						"\n\n This is your verification code: " + passcode + "\n\n Please enter this code in the sign up page to complete the verification process");
 
 				Transport.send(message);
 
@@ -98,10 +104,10 @@ public class VerificationController extends HttpServlet {
 		
 	
 
-	public static int passcode() {
+	public static String passcode() {
 
 		Random rand = new Random();
-		int num = rand.nextInt(9999);
+		String num = String.format("%04d", rand.nextInt(10000));
 		return num;
 
 	}

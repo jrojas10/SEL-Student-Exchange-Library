@@ -33,9 +33,9 @@ public class AddUser extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// get parameters from Sign up form
-		int code = (int) getServletContext().getAttribute("code");
-		int codeEntered = Integer.parseInt(request.getParameter("key"));
-		boolean match = code == codeEntered;
+		String code = (String) getServletContext().getAttribute("code");
+		String codeEntered = request.getParameter("key");
+		boolean match = code.equals(codeEntered);
 		
 		if(!match) {
 			response.sendRedirect("SignUp");
