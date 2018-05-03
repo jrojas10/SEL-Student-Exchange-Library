@@ -37,7 +37,7 @@
 				Register <small>SEL</small>
 			</h1>
 		</div>
-		<form action="AddUser" method="post">
+		<form action="Verification" method="post">
 			<div class="form-group">
 				<label class="control-label">First Name</label> <input
 					class="form-control" type="text" name="FirstName"
