@@ -25,18 +25,16 @@ import models.User;
 public class ProfileController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	
 	@SuppressWarnings("unused")
-	private String getCookie( HttpServletRequest request )
-    {
-        Cookie[] cookies = request.getCookies();
-        if( cookies != null )
-            for( Cookie cookie : cookies )
-                if( cookie.getName().equals( "user" ) )
-                    return cookie.getValue();
+	private String getCookie(HttpServletRequest request) {
+		Cookie[] cookies = request.getCookies();
+		if (cookies != null)
+			for (Cookie cookie : cookies)
+				if (cookie.getName().equals("user"))
+					return cookie.getValue();
 
-        return null;
-    }
+		return null;
+	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -47,8 +45,38 @@ public class ProfileController extends HttpServlet {
 			response.sendRedirect("Login");
 			return;
 		}
-		ArrayList<BookTable> bookTable = (ArrayList<BookTable>) getServletContext().getAttribute("posts");
-		request.setAttribute("bookInfo", bookTable);
+		java.sql.Connection c = null;
+		try {
+			String url = "jdbc:mysql://cs3.calstatela.edu/cs3220stu49";
+
+			Config cfg = new Config();
+			// String url = cfg.getProperty("dbUrl");
+			String username = cfg.getProperty("dbUserName");
+			String password = cfg.getProperty("dbPassword");
+			c = DriverManager.getConnection(url, username, password);
+			
+		ArrayList<BookTable> booksPosted = new ArrayList<BookTable> ();
+		
+		String sql2 = "select * from Posts join Books using(BookID) where UserID = ? ";
+		PreparedStatement pstmt2 = c.prepareStatement(sql2);
+		pstmt2.setInt(1, user.getId());
+		ResultSet rs2 = pstmt2.executeQuery();
+		while (rs2.next()) {
+			BookTable posted = new BookTable (rs2.getInt("BookID"),rs2.getString("Title"),rs2.getString("Price"),rs2.getDate("PostDate"),rs2.getDate("ExperationDate"));
+			booksPosted.add(posted);
+		}
+		request.setAttribute("bookInfo", booksPosted);
+		} catch (SQLException e) {
+			throw new ServletException(e);
+		} finally {
+			try {
+				if (c != null)
+					c.close();
+			} catch (SQLException e) {
+				throw new ServletException(e);
+			}
+		}
+	//	getServletContext().setAttribute("posts", booksPosted);
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/Profile.jsp");
 		dispatcher.forward(request, response);
@@ -56,6 +84,6 @@ public class ProfileController extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
+
 	}
 }
