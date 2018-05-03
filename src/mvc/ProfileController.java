@@ -6,6 +6,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
@@ -16,6 +17,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import models.BookTable;
 import models.Config;
 import models.User;
 
@@ -45,6 +47,8 @@ public class ProfileController extends HttpServlet {
 			response.sendRedirect("Login");
 			return;
 		}
+		ArrayList<BookTable> bookTable = (ArrayList<BookTable>) getServletContext().getAttribute("posts");
+		request.setAttribute("bookInfo", bookTable);
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/Profile.jsp");
 		dispatcher.forward(request, response);

@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.security.spec.RSAKeyGenParameterSpec;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -24,6 +25,7 @@ import javax.servlet.http.HttpSession;
 
 import com.mysql.jdbc.Connection;
 
+import models.BookTable;
 import models.Config;
 import models.User;
 
@@ -127,7 +129,7 @@ public class LoginController extends HttpServlet {
 			pstmt.setString(2, ps);
 
 			ResultSet rs = pstmt.executeQuery();
-
+			ArrayList<BookTable> booksPosted = new ArrayList<BookTable> ();
 			while (rs.next()) {
 
 				User user = new User(rs.getInt("UserID"), rs.getString("FirstName"), rs.getString("LastName"),
@@ -135,6 +137,9 @@ public class LoginController extends HttpServlet {
 						rs.getString("Phone"));
 
 				//
+				
+				
+				
 				HttpSession session = request.getSession();
 				session.setAttribute("authorizedUser", user);
 
@@ -145,7 +150,16 @@ public class LoginController extends HttpServlet {
 				cookie.setPath("/cs3220stu49");
 				response.addCookie(cookie);
 
-				//
+				String sql2 = "select * from Posts join Books using(BookID) where UserID = ? ";
+				PreparedStatement pstmt2 = c.prepareStatement(sql2);
+				pstmt2.setInt(1, rs.getInt("UserID"));
+				ResultSet rs2 = pstmt2.executeQuery();
+				while (rs2.next()) {
+					BookTable posted = new BookTable (rs2.getString("Title"),rs2.getString("Price"),rs2.getDate("PostDate"),rs2.getDate("ExperationDate"));
+					booksPosted.add(posted);
+				}
+				getServletContext().setAttribute("posts", booksPosted);
+				
 
 				//request.setAttribute("u", user);
 				response.sendRedirect("Profile");

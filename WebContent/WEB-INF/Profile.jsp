@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -44,25 +45,26 @@
 
 		<table class="table table-bordered table-striped table-hover">
 			<tr>
-				<th>Book</th>
-				<th>Author</th>
-				<th>ISBN #</th>
+				<th>Title</th>
+				<th>Price</th>
+				<th>Post Date</th>
+				<th>Expiration Date</th>
+				<th>Delete</th>
 			</tr>
-			<tr>
-				<td>Book1</td>
-				<td>Author1</td>
-				<td>123</td>
-			</tr>
-			<tr>
-				<td>Book2</td>
-				<td>Author2</td>
-				<td>456</td>
-			</tr>
-			<tr>
-				<td>Book3</td>
-				<td>Author3</td>
-				<td>789</td>
-			</tr>
+			
+			
+		<div class="row">
+		<c:forEach items="${bookInfo}" var="book">
+		<tr>
+		<td>${book.title}</td>
+		<td>${book.price}</td>
+		<td>${book.postDate}</td>
+		<td>${book.expDate}</td>
+		<td><a href = "removeBook">Delete</a>
+		</tr>
+		</c:forEach>
+		</div>
+			
 		</table>
 	</div>
 
