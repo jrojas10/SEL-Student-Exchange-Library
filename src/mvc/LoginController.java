@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.security.spec.RSAKeyGenParameterSpec;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -24,6 +25,7 @@ import javax.servlet.http.HttpSession;
 
 import com.mysql.jdbc.Connection;
 
+import models.BookTable;
 import models.Config;
 import models.User;
 
@@ -31,36 +33,7 @@ import models.User;
 public class LoginController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-//	public void init(ServletConfig config) throws ServletException {
-//		super.init(config);
-//		ArrayList<User> users = new ArrayList<User>();
-//		java.sql.Connection c = null;
-//		try {
-//			Config cfg = new Config();
-//			String username = cfg.getProperty("dbUserName");
-//			String password = cfg.getProperty("dbPassword");
-//			String url = "jdbc:mysql://cs3.calstatela.edu/cs3220stu49";
-//			c = DriverManager.getConnection(url, username, password);
-//			Statement stmt = c.createStatement();
-//			ResultSet rs = stmt.executeQuery("select * from Users2");
-//			while (rs.next()) {
-//				User u = new User(rs.getInt("UserID"), rs.getString("FirstName"), rs.getString("LastName"),
-//						rs.getString("EMail"), rs.getString("PASSWORD"), rs.getString("UserName"),
-//						rs.getString("Phone"));
-//				users.add(u);
-//			}
-//			getServletContext().setAttribute("users", users);
-//		} catch (SQLException e) {
-//			throw new ServletException(e);
-//		} finally {
-//			try {
-//				if (c != null)
-//					c.close();
-//			} catch (SQLException e) {
-//				throw new ServletException(e);
-//			}
-//		}
-//	}
+
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -127,7 +100,7 @@ public class LoginController extends HttpServlet {
 			pstmt.setString(2, ps);
 
 			ResultSet rs = pstmt.executeQuery();
-
+			
 			while (rs.next()) {
 
 				User user = new User(rs.getInt("UserID"), rs.getString("FirstName"), rs.getString("LastName"),
@@ -135,6 +108,9 @@ public class LoginController extends HttpServlet {
 						rs.getString("Phone"));
 
 				//
+				
+				
+				
 				HttpSession session = request.getSession();
 				session.setAttribute("authorizedUser", user);
 
@@ -145,9 +121,9 @@ public class LoginController extends HttpServlet {
 				cookie.setPath("/cs3220stu49");
 				response.addCookie(cookie);
 
-				//
-
-				//request.setAttribute("u", user);
+				
+			
+				
 				response.sendRedirect("Profile");
 				return;
 			}
