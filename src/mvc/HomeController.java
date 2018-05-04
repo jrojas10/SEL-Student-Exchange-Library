@@ -10,20 +10,18 @@ import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import models.Book;
 import models.Config;
+import models.User;
 
 @WebServlet("/Home")
 public class HomeController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
-	public HomeController() {
-		super();
-	}	
 
 	public void init(ServletConfig config) throws ServletException {
 		super.init(config);
@@ -46,7 +44,7 @@ public class HomeController extends HttpServlet {
 			while (rs.next()) {
 				Book book = new Book(rs.getInt("BookID"), rs.getDouble("Price"), rs.getString("Title"),
 						rs.getString("ISBN"), rs.getString("AuthorFirst"), rs.getString("AuthorLast"),
-						rs.getString("SUBJECT"),rs.getString("Class"),rs.getString("State"));
+						rs.getString("SUBJECT"), rs.getString("Class"), rs.getString("State"));
 				books.add(book);
 			}
 			getServletContext().setAttribute("books", books);
@@ -64,6 +62,7 @@ public class HomeController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/HomePage.jsp");
 		dispatcher.forward(request, response);
 
