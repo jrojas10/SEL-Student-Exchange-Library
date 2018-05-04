@@ -52,13 +52,13 @@
 			<c:forEach items="${books}" var="book">
 				<div class="col-sm-4 text-center">
 					<div class="well">
-						<a href="Description?id=${book.id-1}"> <img
+						<a href="Description?id=${book.id}"> <img
 							style="height: 150px;"
 							src="http://via.placeholder.com/150?text=N/A"
 							class="img-responsive img-thumbnail" alt="N/A">
 						</a>
 						<h4 class="text-center">
-							<a href="Description?id=${book.id-1}"> ${book.title} </a>
+							<a href="Description?id=${book.id}"> ${book.title} </a>
 						</h4>
 					</div>
 				</div>

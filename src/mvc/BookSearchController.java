@@ -102,6 +102,7 @@ public class BookSearchController extends HttpServlet {
 		
 	//	books = results;
 		request.setAttribute("results", results);
+		
 		//request.setAttribute("results", results);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/Search.jsp");
 		dispatcher.forward(request, response);
@@ -114,7 +115,7 @@ public class BookSearchController extends HttpServlet {
 		for ( Book book : books ) {
 			if ( isMatch(book, comparater) ) {
 				results.add(book);
-				System.out.println("match: " + book.getTitle() );
+				System.out.println("match: ID = " + book.getId() + " Title: "  + book.getTitle() );
 			}
 		}
 		return results;

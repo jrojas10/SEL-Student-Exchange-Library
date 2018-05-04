@@ -50,10 +50,10 @@
 				<div class="display">
 					<img src="test-img/book.jpg">
 					<div class="book-info">
-						<strong><em><div class="title">${books[param.id].title}</div></em></strong>
+						<strong><em><div class="title">${books[id].title}</div></em></strong>
 						<div class="auth-box">
 							<div>by :</div>
-							<div class="author">${books[param.id].authorFirst}</div>
+							<div class="author">${books[id].authorFirst}</div>
 						</div>
 					</div>
 				</div>
@@ -68,32 +68,37 @@
 
 					<tr>
 						<td class="tb-col">Title</td>
-						<td>Algorithm Analysis</td>
+						<td>${books[id].title}</td>
 					</tr>
 
 					<tr>
 						<td class="tb-col">Author</td>
-						<td>Cohen, Micheal</td>
+						<td>${books[id].authorLast}, ${books[id].authorFirst}</td>
 					</tr>
 
 					<tr>
 						<td class="tb-col">Subject</td>
-						<td>Computer Science</td>
+						<td>${books[id].subject}</td>
 					</tr>
 
 					<tr>
 						<td class="tb-col">Class</td>
-						<td>CS - 3112</td>
+						<td>${books[id].course}</td>
 					</tr>
 
 					<tr>
 						<td class="tb-col">Condition</td>
-						<td>Good</td>
+						<td> ${books[id].state}</td>
 					</tr>
 
 					<tr>
 						<td class="tb-col">ISBN #</td>
-						<td>1-123-1234-123-12</td>
+						<td>${books[id].isbn}</td>
+					</tr>
+					<tr>
+						<td class = "tb-col"> Price </td>
+						<td>$ ${books[id].price}</td>
+						
 					</tr>
 
 				</table>
