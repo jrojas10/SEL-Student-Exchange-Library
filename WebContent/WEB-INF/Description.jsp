@@ -14,33 +14,24 @@
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
 	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
 	crossorigin="anonymous">
+
+
 </head>
 
 <body>
-  
-  <nav class="navbar navbar-inverse">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <a class="navbar-brand" href="Home">SEL</a>
-      </div>
-      <ul class="nav navbar-nav">
-        <li><a href="Home">Home</a></li>
-        <li><a href="Post">Post</a></li>
-        <li><a href="Profile">User Profile</a></li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="SignUp"><span class="glyphicon glyphicon-user"></span>
-            Sign Up</a></li>
-        <li><a href="Login"><span class="glyphicon glyphicon-log-in"></span>
-            Login</a></li>
-      </ul>
-    </div>
-	</nav>
+	<form class="form in-line" action="Search" method="post">
+		<div class="form-group">
+			<input class="form-control" type="text" name="query"
+				placeholder="Enter your search term(s)"> <br> <input
+				class="form-control btn btn-primary" type="submit" value="Search">
+		</div>
+	</form>
 
 	<div class="page">
 
 		<div class="top">
 			<h1>SEL - Description of Book</h1>
+    
 		</div>
 
 		<div class="split">
@@ -50,10 +41,10 @@
 				<div class="display">
 					<img src="test-img/book.jpg">
 					<div class="book-info">
-						<strong><em><div class="title">${books[id].title}</div></em></strong>
+						<strong><em><div class="title">${books[param.id].title}</div></em></strong>
 						<div class="auth-box">
 							<div>by :</div>
-							<div class="author">${books[id].authorFirst}</div>
+							<div class="author">${books[param.id].authorFirst}</div>
 						</div>
 					</div>
 				</div>
@@ -68,37 +59,39 @@
 
 					<tr>
 						<td class="tb-col">Title</td>
-						<td>${books[id].title}</td>
+						<td>Algorithm Analysis</td>
 					</tr>
 
 					<tr>
 						<td class="tb-col">Author</td>
-						<td>${books[id].authorLast}, ${books[id].authorFirst}</td>
+						<td>Cohen, Micheal</td>
 					</tr>
 
 					<tr>
 						<td class="tb-col">Subject</td>
-						<td>${books[id].subject}</td>
+						<td>Computer Science</td>
 					</tr>
 
 					<tr>
 						<td class="tb-col">Class</td>
-						<td>${books[id].course}</td>
+						<td>CS - 3112</td>
 					</tr>
 
 					<tr>
 						<td class="tb-col">Condition</td>
-						<td> ${books[id].state}</td>
+						<td>Good</td>
 					</tr>
 
 					<tr>
 						<td class="tb-col">ISBN #</td>
+
 						<td>${books[id].isbn}</td>
 					</tr>
 					<tr>
 						<td class = "tb-col"> Price </td>
 						<td>$${books[id].price}</td>
 						
+
 					</tr>
 
 				</table>
