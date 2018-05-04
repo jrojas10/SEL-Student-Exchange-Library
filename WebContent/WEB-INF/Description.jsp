@@ -50,10 +50,13 @@
 				<div class="display">
 					<img src="test-img/book.jpg">
 					<div class="book-info">
-						<strong><em><div class="title">${books[param.id].title}</div></em></strong>
+						<strong><em><div class="title">${book.title}</div></em></strong>
 						<div class="auth-box">
 							<div>by :</div>
-							<div class="author">${books[param.id].authorFirst}</div>
+							<div class="author" style="display: flex; flex-flow: row wrap;">
+								<div>${book.authorLast} , </div>
+								<div> ${book.authorFirst} </div> 
+							</div>
 						</div>
 					</div>
 				</div>
@@ -68,32 +71,35 @@
 
 					<tr>
 						<td class="tb-col">Title</td>
-						<td>Algorithm Analysis</td>
+						<td>${book.title}</td>
 					</tr>
 
 					<tr>
-						<td class="tb-col">Author</td>
-						<td>Cohen, Micheal</td>
+						<td class="tb-col" style="display: flex;">Author</td>
+						<td>
+							<div  style="display: flex; flex-flow: row wrap;"> ${book.authorLast} , </div>
+							<div> ${books.authorFirst}</div>
+						</td>
 					</tr>
 
 					<tr>
 						<td class="tb-col">Subject</td>
-						<td>Computer Science</td>
+						<td>${book.subject}</td>
 					</tr>
 
 					<tr>
 						<td class="tb-col">Class</td>
-						<td>CS - 3112</td>
+						<td>${book.course}</td>
 					</tr>
 
 					<tr>
 						<td class="tb-col">Condition</td>
-						<td>Good</td>
+						<td>${book.state}</td>
 					</tr>
 
 					<tr>
 						<td class="tb-col">ISBN #</td>
-						<td>1-123-1234-123-12</td>
+						<td>${book.isbn}</td>
 					</tr>
 
 				</table>
