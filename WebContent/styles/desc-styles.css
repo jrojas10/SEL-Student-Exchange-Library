@@ -10,8 +10,8 @@ body {
   display: flex;
   flex-flow: column wrap;
   align-items: center;
-  background-color: rgba(255, 244, 175, 0.65) !important;
-}
+/*   background-color: rgba(255, 244, 175, 0.65) !important;
+ */}
 
 nav {
 	width: 100%;

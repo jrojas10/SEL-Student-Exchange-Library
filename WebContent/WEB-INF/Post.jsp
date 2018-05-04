@@ -148,7 +148,7 @@
 				<label><input type="radio" name="condition" value="Good">Good</label>
 			</div>
 			<div class="radio">
-				<label><input type="radio" name="condition" value="Mid">Mid</label>
+				<label><input type="radio" name="condition" value="Fair">Fair</label>
 			</div>
 			<div class="radio">
 				<label><input type="radio" name="condition" value="Poor">Poor</label>

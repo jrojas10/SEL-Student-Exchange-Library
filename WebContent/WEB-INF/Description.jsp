@@ -9,7 +9,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Description</title>
 
-<!-- <link rel="stylesheet" href="styles/desc-styles.css"> -->
+<link rel="stylesheet" href="styles/desc-styles.css"> 
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
 	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
@@ -40,7 +40,7 @@
 	<div class="page">
 
 		<div class="top">
-			<h1>SEL - Description of a Book</h1>
+			<h1>SEL - Description of Book</h1>
 		</div>
 
 		<div class="split">
@@ -64,7 +64,7 @@
 
 				<div class="details">Details</div>
 
-				<table>
+				<table class="table">
 
 					<tr>
 						<td class="tb-col">Title</td>
@@ -97,7 +97,7 @@
 					</tr>
 					<tr>
 						<td class = "tb-col"> Price </td>
-						<td>$ ${books[id].price}</td>
+						<td>$${books[id].price}</td>
 						
 					</tr>
 
@@ -112,12 +112,12 @@
 
 			<div style="margin: .5em">Posted by :</div>
 
-			<a href="Profile" class="profile-link">
 				<div class="profile">
 					<img src="test-img/default.png" id="prof-pic" alt="yourBook">
-					<strong><div id="prof-username">Username</div></strong>
+					<div id="prof-username">Username: ${userobject.username}</div>
+					<div id="prof-username">E-mail: ${userobject.email}</div>	
 				</div>
-			</a>
+
 
 		</div>
 
