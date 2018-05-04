@@ -9,7 +9,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Description</title>
 
-<!-- <link rel="stylesheet" href="styles/desc-styles.css"> -->
+<link rel="stylesheet" href="styles/desc-styles.css">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
 	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
@@ -105,7 +105,7 @@
 
 		<div class="bottom">
 
-			<div style="margin: .5em">Posted by :</div>
+			<div style="margin-top: 1em; margin-left: .5em; margin-bottom: .5em">Posted by :</div>
 
 			<a href="Profile" class="profile-link">
 				<div class="profile">
