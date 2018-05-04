@@ -9,7 +9,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Description</title>
 
-<!-- <link rel="stylesheet" href="styles/desc-styles.css"> -->
+<link rel="stylesheet" href="styles/desc-styles.css">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
 	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
@@ -50,10 +50,13 @@
 				<div class="display">
 					<img src="test-img/book.jpg">
 					<div class="book-info">
-						<strong><em><div class="title">${books[param.id].title}</div></em></strong>
+						<strong><em><div class="title">${book.title}</div></em></strong>
 						<div class="auth-box">
 							<div>by :</div>
-							<div class="author">${books[param.id].authorFirst}</div>
+							<div class="author" style="display: flex; flex-flow: row wrap;">
+								<div>${book.authorLast} , </div>
+								<div> ${book.authorFirst} </div> 
+							</div>
 						</div>
 					</div>
 				</div>
@@ -68,32 +71,35 @@
 
 					<tr>
 						<td class="tb-col">Title</td>
-						<td>Algorithm Analysis</td>
+						<td>${book.title}</td>
 					</tr>
 
 					<tr>
-						<td class="tb-col">Author</td>
-						<td>Cohen, Micheal</td>
+						<td class="tb-col" style="display: flex;">Author</td>
+						<td>
+							<div  style="display: flex; flex-flow: row wrap;"> ${book.authorLast} , </div>
+							<div> ${books.authorFirst}</div>
+						</td>
 					</tr>
 
 					<tr>
 						<td class="tb-col">Subject</td>
-						<td>Computer Science</td>
+						<td>${book.subject}</td>
 					</tr>
 
 					<tr>
 						<td class="tb-col">Class</td>
-						<td>CS - 3112</td>
+						<td>${book.course}</td>
 					</tr>
 
 					<tr>
 						<td class="tb-col">Condition</td>
-						<td>Good</td>
+						<td>${book.state}</td>
 					</tr>
 
 					<tr>
 						<td class="tb-col">ISBN #</td>
-						<td>1-123-1234-123-12</td>
+						<td>${book.isbn}</td>
 					</tr>
 
 				</table>
@@ -105,7 +111,7 @@
 
 		<div class="bottom">
 
-			<div style="margin: .5em">Posted by :</div>
+			<div style="margin-top: 1em; margin-left: .5em; margin-bottom: .5em">Posted by :</div>
 
 			<a href="Profile" class="profile-link">
 				<div class="profile">

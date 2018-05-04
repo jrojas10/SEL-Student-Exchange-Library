@@ -10,7 +10,6 @@ body {
   display: flex;
   flex-flow: column wrap;
   align-items: center;
-  background-color: rgba(255, 244, 175, 0.65) !important;
 }
 
 nav {
@@ -40,7 +39,9 @@ table tr, table th, table td{
 }
 
 .page {
-  padding: 2em;
+  padding-left: 0em !important;
+  margin-left: 0em !important; 
+  margin-right: 1em;
   width: 44.6em;
   display: flex;
   flex-flow: column wrap;
@@ -58,6 +59,7 @@ table tr, table th, table td{
   justify-content: space-between;
   align-items: center;
   padding-left: .5em; 
+  margin-bottom: 1.5em;
   width: 44.2em;
 }
 
@@ -71,6 +73,15 @@ table tr, table th, table td{
   margin: 1em;
   flex-flow: column nowrap;
   margin-left: 3em;
+}
+
+.bottom {
+  margin-top: 1em;
+  padding: 0.3em;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: flex-start;
 }
 
 .display {
@@ -100,14 +111,6 @@ table tr, table th, table td{
   width: 0em;
 }
 
-.bottom {
-  padding: 0.3em;
-  display: flex;
-  flex-flow: column nowrap;
-  justify-content: center;
-  align-items: flex-start;
-}
-
 .profile-link {
   margin-left: .5em;
 }
@@ -121,7 +124,7 @@ table tr, table th, table td{
   background-color: rgba(94, 106, 106, 0.15);
 }
 
-.profile-link:active {  
+.profile-link:active { 
   background-color: rgba(104, 109, 113, 0.44);
 }
 

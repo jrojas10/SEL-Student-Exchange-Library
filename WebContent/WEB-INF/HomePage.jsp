@@ -50,7 +50,7 @@
 
 		<div class="row">
 			<c:forEach items="${books}" var="book">
-				<div class="col-sm-4 text-center">
+				<div class="col-sm-4 text-center" name="selected" value="${book.id-1}">
 					<div class="well">
 						<a href="Description?id=${book.id-1}"> <img
 							style="height: 150px;"
