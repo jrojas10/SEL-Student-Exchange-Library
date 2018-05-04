@@ -8,17 +8,32 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Description</title>
-<link rel="stylesheet" href="styles/desc-styles.css">
+<!-- <link rel="stylesheet" href="styles/desc-styles.css"> -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+	crossorigin="anonymous">
 </head>
 
 <body>
-	<form class="form in-line" action="Search" method="post">
-		<div class="form-group">
-			<input class="form-control" type="text" name="query"
-				placeholder="Enter your search term(s)"> <br> <input
-				class="form-control btn btn-primary" type="submit" value="Search">
+	<nav class="navbar navbar-inverse">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<a class="navbar-brand" href="Home">SEL</a>
 		</div>
-	</form>
+		<ul class="nav navbar-nav">
+			<li><a href="Home">Home</a></li>
+			<li><a href="Post">Post</a></li>
+			<li><a href="Profile">User Profile</a></li>
+		</ul>
+		<ul class="nav navbar-nav navbar-right">
+			<li><a href="SignUp"><span class="glyphicon glyphicon-user"></span>
+					Sign Up</a></li>
+			<li><a href="Login"><span class="glyphicon glyphicon-log-in"></span>
+					Login</a></li>
+		</ul>
+	</div>
+	</nav>
 
 	<div class="page">
 
