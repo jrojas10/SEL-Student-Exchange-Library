@@ -3,15 +3,18 @@
 @import url('https://fonts.googleapis.com/css?family=Merriweather:400,700');
 
 body {
-  background-color: white;
   font-family: "Open Sans", sans-serif;
-  padding: 5px 25px;
   font-size: 18px;
-  margin: 0;
+  margin: 0em;
   color: #000;
   display: flex;
-  justify-content: center;
-  background-color: rgba(255, 244, 175, 0.65);
+  flex-flow: column wrap;
+  align-items: center;
+  background-color: rgba(255, 244, 175, 0.65) !important;
+}
+
+nav {
+	width: 100%;
 }
 
 h1 {
@@ -29,10 +32,6 @@ table tr, table th, table td{
   border: solid;
   border-width: .11em;
   padding: .5em;
-}
-
-button {
-  height: 2em;
 }
 
 .top, .left, .right {
@@ -133,7 +132,7 @@ button {
 }
 
 #prof-pic {
-  width: 3em;
+  width: 4.5em;
   height: auto;
   border-radius: 80%;
   padding: .4em;
@@ -141,9 +140,4 @@ button {
 
 #prof-username {
   padding: .4em .6em;
-}
-
-#blank {
-  border-top: hidden;
-  border-left: hidden;
 }
