@@ -38,7 +38,6 @@
 
 		<div class="top">
 			<h1>SEL - Description of a Book</h1>
-			<button>Edit</button>
 		</div>
 
 		<div class="split">
@@ -105,7 +104,7 @@
 
 			<div style="margin: .5em">Posted by :</div>
 
-			<a href="/WEB-INF/Profile.jsp" class="profile-link">
+			<a href="Profile" class="profile-link">
 				<div class="profile">
 					<img src="test-img/default.png" id="prof-pic" alt="yourBook">
 					<strong><div id="prof-username">Username</div></strong>
