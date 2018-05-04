@@ -4,10 +4,12 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -21,17 +23,18 @@ import models.User;
 @WebServlet("/AddBook")
 public class AddBook extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public AddBook() {
-        super();
-    }
+   
+	@SuppressWarnings("unused")
+	private String getCookie(HttpServletRequest request) {
+		Cookie[] cookies = request.getCookies();
+		if (cookies != null)
+			for (Cookie cookie : cookies)
+				if (cookie.getName().equals("user"))
+					return cookie.getValue();
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
+		return null;
+	}
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
@@ -86,8 +89,21 @@ public class AddBook extends HttpServlet {
 			}			
 			pstmt.executeUpdate();
 			
-			String sql_2 = "INSERT INTO `Posts` VALUES (0, ?, ?, ?, ?);";
+			String maxID = "select MAX(BookID) from Books";
+			PreparedStatement pstmt3 = c.prepareStatement(maxID);
+			ResultSet rs = pstmt3.executeQuery(maxID);
+			int bookID = 0;
+			while (rs.next()) {
+			bookID = rs.getInt(1);
+			System.out.println(bookID);
+			}
+			
+			String sql_2 = "INSERT INTO `Posts` (`PostID`, `PostDate`, `UserID`, `BookID`, `ExperationDate`) VALUES (NULL, \"2018-05-05\", ?, ?, \"2018-05-12\");";
+		//	String sql_2 = "INSERT INTO Posts VALUES (0, CURDATE(), ?, ?, ADDDATE(CURDATE(),7);";
 			PreparedStatement pstmt_2 = c.prepareStatement(sql_2);
+			pstmt_2.setInt(1,user.getId() );
+			pstmt_2.setInt(2, bookID);
+			pstmt_2.executeUpdate();
 			
 		} catch (SQLException e) {
 			throw new ServletException(e);
