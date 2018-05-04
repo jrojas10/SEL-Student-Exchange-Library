@@ -33,14 +33,14 @@
 	</nav>
 	<div class="container">
 		<div class="jumbotron">
-			<h1>${user.firstName}${user.lastName}</h1>
+			<h1>${user.firstName} ${user.lastName}</h1>
 
 			<a class="btn btn-primary" href="Logout">Logout</a> <a
 				class="btn btn-primary" href="Post">Post a book</a> <a
 				class="btn btn-primary" href="Search">Search</a>
 		</div>
 		<h3>
-			Books<small>${user.firstName} ${user.lastName}</small>
+			Books<small> by ${user.firstName} ${user.lastName}</small>
 		</h3>
 
 		<table class="table table-bordered table-striped table-hover">
@@ -57,7 +57,7 @@
 		<c:forEach items="${bookInfo}" var="book">
 		<tr>
 		<td>${book.title}</td>
-		<td>${book.price}</td>
+		<td> \$${book.price}</td>
 		<td>${book.postDate}</td>
 		<td>${book.expDate}</td>
 		<td><a href = "RemoveBook?id=${book.id}" >Delete</a>
