@@ -85,11 +85,11 @@ public class DescriptionController extends HttpServlet {
 			String string = "" + bookID;
 			pstmt.setString(1, string);
 			ResultSet rs = pstmt.executeQuery();
-			User user = null;
+			User user2 = null;
 			while (rs.next()) {
-				 user = new User(rs.getInt("UserID"), rs.getString("FirstName"), rs.getString("LastName"), rs.getString("EMail"), rs.getString("Password"), rs.getString("UserName"), rs.getString("Phone"));
+				 user2 = new User(rs.getInt("UserID"), rs.getString("FirstName"), rs.getString("LastName"), rs.getString("EMail"), rs.getString("Password"), rs.getString("UserName"), rs.getString("Phone"));
 			}
-			request.setAttribute("userobject", user);
+			request.setAttribute("userobject", user2);
 		} catch (SQLException e) {
 			throw new ServletException(e);
 		} finally {
