@@ -4,6 +4,7 @@
 # But do not Ignore these files...
 !.gitignore
 
+
 !src
 !src/**
 
@@ -30,6 +31,7 @@
 !*.md
 !*.jpg
 !*.png
+!*.html
 
 
 # MAC HIDDEN FILES
