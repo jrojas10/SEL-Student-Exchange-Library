@@ -118,9 +118,10 @@
 
 			<div class="profile">
 				<img src="test-img/default.png" id="prof-pic" alt="yourBook">
-				<div id="prof-username">Username: ${userobject.username}</div>
-				<div id="prof-username">E-mail: ${userobject.email}</div>
-			</div>
+				</div>
+				<p>Username: ${userobject.username}</p></div>
+				<p>E-mail: ${userobject.email}</p>
+			
 			<form action="Buy" method="get">
 				<button type="submit" class="btn btn-primary">Buy</button>
 			</form>
