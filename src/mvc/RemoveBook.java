@@ -40,6 +40,11 @@ public class RemoveBook extends HttpServlet {
 			
 			pstmt.executeUpdate();
 			
+			String sql2 = "delete from Posts where BookID = ? ";
+			PreparedStatement pstmt2 = c.prepareStatement(sql2);
+			pstmt2.setInt(1, id);
+			pstmt2.executeUpdate();
+			
 		} catch (SQLException e) {
 			throw new ServletException(e);
 		} finally {

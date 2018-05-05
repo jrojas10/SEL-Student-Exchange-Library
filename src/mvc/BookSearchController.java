@@ -29,7 +29,20 @@ public class BookSearchController extends HttpServlet {
     public void init(ServletConfig config) throws ServletException {
     	super.init(config);
     	
-    	try {
+    	
+    	
+    }
+  
+    public BookSearchController() {
+        super();
+      
+    }
+
+	
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//System.out.println("test");
+		
+		try {
 			Class.forName("com.mysql.jdbc.Driver");
 		} catch (ClassNotFoundException e) {
 			throw new ServletException(e);
@@ -62,17 +75,6 @@ public class BookSearchController extends HttpServlet {
 				throw new ServletException(e);
 			}
 		}
-    	
-    }
-  
-    public BookSearchController() {
-        super();
-      
-    }
-
-	
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("test");
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/Search.jsp");
 		dispatcher.forward(request, response);
 		
