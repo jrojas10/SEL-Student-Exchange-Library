@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import models.Book;
 import models.User;
 
 /**
@@ -41,6 +42,7 @@ public class BuyNotification extends HttpServlet {
 		User seller = (User) getServletContext().getAttribute("seller");
 		request.setAttribute("seller", seller);
 		User user = (User) request.getSession().getAttribute("authorizedUser");
+		Book book = (Book) getServletContext().getAttribute("booksold");
 		//getServletContext().setAttribute("code", passcode);
 		Properties props = new Properties();
 		props.put("mail.smtp.host", "smtp.gmail.com");
@@ -61,13 +63,14 @@ public class BuyNotification extends HttpServlet {
 			message.setFrom(new InternetAddress("sel.csula@gmail.com"));
 			message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(seller.getEmail()));
 			message.setSubject("SEL-Buy Notice");
-			message.setText("Dear SEL user," + "\n\n Someone is interested in buying your book. \n\n Contact this email address to set up a place and time to meet up." + "\n\n" + 
-			user.getEmail());
+			message.setText("Dear SEL user," + "\n\n Someone is interested in buying your book, \n\n " + book.getTitle() + " by " 
+			+ book.getAuthorFirst() + " " + book.getAuthorLast() + " \n\n Contact this email address to set up a place and time to meet up."
+					+ "\n\n" + 	user.getEmail());
 					
 
 			Transport.send(message);
 
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/Notification.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/Alert.jsp");
 			dispatcher.forward(request, response);
 
 		} catch (MessagingException e) {
