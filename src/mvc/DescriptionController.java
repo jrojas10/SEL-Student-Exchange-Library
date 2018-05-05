@@ -88,6 +88,7 @@ public class DescriptionController extends HttpServlet {
 			User user2 = null;
 			while (rs.next()) {
 				 user2 = new User(rs.getInt("UserID"), rs.getString("FirstName"), rs.getString("LastName"), rs.getString("EMail"), rs.getString("Password"), rs.getString("UserName"), rs.getString("Phone"));
+				 getServletContext().setAttribute("seller", user2);
 			}
 			request.setAttribute("userobject", user2);
 		} catch (SQLException e) {

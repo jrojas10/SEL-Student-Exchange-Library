@@ -121,6 +121,9 @@
 				<div id="prof-username">Username: ${userobject.username}</div>
 				<div id="prof-username">E-mail: ${userobject.email}</div>
 			</div>
+			<form action="Buy" method="get">
+			<button type="submit" class="btn btn-primary">Buy</button>
+		</form>
 
 
 		</div>
