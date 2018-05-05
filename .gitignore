@@ -26,6 +26,9 @@
 !resources
 !resources/**
 
+!icon/
+!icon/**
+
 !*.txt
 !*.md
 !*.jpg
