@@ -8,24 +8,20 @@
 !src
 !src/**
 
-!ban
-!ban/**
+!banner
+!banner/**
 
 !resources
 !resources/**
 
+!documents-and-deliverables
+!documents-and-deliverables/**
 
 !WebContent
 !WebContent/**
 
 !libs
 !libs/**
-
-!ban
-!ban/**
-
-!resources
-!resources/**
 
 !icon/
 !icon/**
