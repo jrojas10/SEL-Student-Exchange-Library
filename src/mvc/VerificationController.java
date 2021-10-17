@@ -72,7 +72,7 @@ public class VerificationController extends HttpServlet {
 
 		Session session = Session.getDefaultInstance(props, new javax.mail.Authenticator() {
 			protected PasswordAuthentication getPasswordAuthentication() {
-				return new PasswordAuthentication("sel.csula@gmail.com", "moresecurepassword");
+				return new PasswordAuthentication("sel.csula@gmail.com", "passwordhere");
 			}
 		});
 
